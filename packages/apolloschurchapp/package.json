@@ -16,6 +16,7 @@
     "babel-preset-apollos": "file:../babel-preset-apollos",
     "babel-preset-react-native": "5",
     "codecov": "3.0.2",
+    "detox": "9.0.5",
     "get-yarn-workspaces": "1.0.2",
     "jest": "23.5.0",
     "jest-react-native": "18.0.0",
@@ -34,6 +35,17 @@
   "files": [
     "src"
   ],
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/apolloschurchapp.app",
+        "build": "xcodebuild -project ios/apolloschurchapp.xcodeproj -scheme apolloschurchapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone X"
+      }
+    },
+    "test-runner": "jest"
+  },
   "scripts": {
     "android": "react-native run-android",
     "codecov": "cat ./coverage/lcov.info | codecov",
