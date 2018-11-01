@@ -36,6 +36,7 @@
     "src"
   ],
   "detox": {
+    "runner-config": "e2e/config.json",
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/apolloschurchapp.app",
