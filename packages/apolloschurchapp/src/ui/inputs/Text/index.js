@@ -69,6 +69,7 @@ const Text = enhance(
     disabled = false,
     theme,
     inputRef,
+    testID, // Used for interaction with inputs via E2E testing frameworks
     focusAnimation: focusAnimationInput, // from withFocusAnimation
     ...textInputProps
   }) => {
@@ -78,7 +79,7 @@ const Text = enhance(
     const animatedStyle = { opacity: focusAnimation, flex: 1 };
 
     return (
-      <InputWrapper style={wrapperStyle} disabled={disabled}>
+      <InputWrapper testID={testID} style={wrapperStyle} disabled={disabled}>
         <View>
           <AddonRow>
             <InputAddon>{prefix}</InputAddon>

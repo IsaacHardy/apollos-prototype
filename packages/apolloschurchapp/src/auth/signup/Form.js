@@ -43,6 +43,7 @@ class Form extends PureComponent {
           <PaddedView>
             <View>
               <TextInput
+                testID="registerEmailInput"
                 label="Email"
                 type="email"
                 value={values.email}
@@ -54,6 +55,7 @@ class Form extends PureComponent {
                 enablesReturnKeyAutomatically
               />
               <TextInput
+                testID="registerPasswordInput"
                 label="Password"
                 type="password"
                 value={values.password}
@@ -73,6 +75,7 @@ class Form extends PureComponent {
         <BottomSafeAreaView>
           <PaddedView vertical={false}>
             <Button
+              testID="registerSubmitButton"
               onPress={handleSubmit}
               title="Register"
               disabled={!isValid}

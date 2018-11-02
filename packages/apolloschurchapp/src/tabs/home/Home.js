@@ -41,7 +41,7 @@ class Home extends PureComponent {
 
   render() {
     return (
-      <BackgroundView>
+      <BackgroundView testID="homeView">
         <SafeAreaView>
           <Query query={getUserFeed} fetchPolicy="cache-and-network">
             {({ loading, error, data, refetch }) => (

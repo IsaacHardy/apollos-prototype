@@ -54,7 +54,7 @@ class Connect extends PureComponent {
 
   render() {
     return (
-      <BackgroundView>
+      <BackgroundView testID="connectView">
         <Query query={getLoginState}>
           {({ data }) => {
             if (get(data, 'isLoggedIn', false))
@@ -86,7 +86,7 @@ class Connect extends PureComponent {
                         event registration, and easy online giving!
                       </BodyText>
                     </Paragraph>
-                    <StyledLoginButton />
+                    <StyledLoginButton testID="getConnected" />
                   </Header>
                   <ActionTable />
                 </ScrollView>

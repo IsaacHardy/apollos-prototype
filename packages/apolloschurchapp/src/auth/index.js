@@ -69,9 +69,11 @@ class Auth extends PureComponent {
 
   render() {
     return (
-      <FlexedView>
+      <FlexedView testID="loginView">
         <HeaderContainer>
-          <CancelButton onPress={this.handleFinish}>Cancel</CancelButton>
+          <CancelButton testID="loginCancelButton" onPress={this.handleFinish}>
+            Cancel
+          </CancelButton>
           <Header>
             <BrandIcon />
             <Title>Welcome!</Title>

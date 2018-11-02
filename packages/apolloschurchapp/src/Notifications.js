@@ -11,7 +11,7 @@ export default class NotificationsInit extends Component {
 
   componentWillMount() {
     OneSignal.init(ONE_SIGNAL_KEY, {
-      kOSSettingsKeyAutoPrompt: true,
+      kOSSettingsKeyAutoPrompt: process.env.NODE_ENV === 'production',
     });
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
