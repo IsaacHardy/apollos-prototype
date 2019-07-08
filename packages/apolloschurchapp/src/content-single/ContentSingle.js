@@ -53,15 +53,15 @@ class ContentSingle extends PureComponent {
             error={error}
           />
         );
-      case 'ContentSeriesContentItem':
-        return (
-          <ContentSeriesContentItem
-            id={this.itemId}
-            content={content}
-            loading={loading}
-            error={error}
-          />
-        );
+      // case 'ContentSeriesContentItem':
+      //   return (
+      //     <ContentSeriesContentItem
+      //       id={this.itemId}
+      //       content={content}
+      //       loading={loading}
+      //       error={error}
+      //     />
+      //   );
       case 'UniversalContentItem':
       default:
         return (

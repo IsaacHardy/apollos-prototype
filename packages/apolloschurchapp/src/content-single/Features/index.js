@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { ErrorCard } from '@apollosproject/ui-kit';
+import { get } from 'lodash';
 import TextFeature from './TextFeature';
 
 import GET_CONTENT_ITEM_FEATURES from './getContentItemFeatures';
@@ -15,10 +16,11 @@ const Features = ({ contentId }) => {
 
   return (
     <Query query={GET_CONTENT_ITEM_FEATURES} variables={{ contentId }}>
-      {({ data: { node: { features } = {} } = {}, loading, error }) => {
+      {({ data: { node } = {}, loading, error }) => {
         if (error) return <ErrorCard error={error} />;
         if (loading) return null;
 
+        const features = get(node, 'features', []);
         return features.map(({ __typename, ...feature }) => {
           const Feature = FEATURE_MAP[__typename];
           return (
