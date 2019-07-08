@@ -9,7 +9,7 @@ import GET_SHARE_CONTENT from './getShareContent';
 
 const ShareButton = ({ itemId, title, message, url }) => (
   <Query query={GET_SHARE_CONTENT} variables={{ itemId }}>
-    {({ data: { node: { sharing } = {} } = {} }) => {
+    {({ data: { node: { sharing } = { sharing: {} } } = {} }) => {
       const content = {
         id: itemId,
         title: title || sharing.title,
