@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import { get } from 'lodash';
 
 import Share from 'apolloschurchapp/src/ui/Share';
 
@@ -9,7 +10,8 @@ import GET_SHARE_CONTENT from './getShareContent';
 
 const ShareButton = ({ itemId, title, message, url }) => (
   <Query query={GET_SHARE_CONTENT} variables={{ itemId }}>
-    {({ data: { node: { sharing } = { sharing: {} } } = {} }) => {
+    {({ data }) => {
+      const sharing = get(data, 'node.sharing', {});
       const content = {
         id: itemId,
         title: title || sharing.title,
