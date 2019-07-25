@@ -22,11 +22,19 @@
       "<rootDir>/../../scripts/fingers-crossed-reporter.js"
     ]
   },
+  "peerDependencies": {
+    "@apollosproject/ui-kit": "*"
+  },
   "devDependencies": {
     "@apollosproject/babel-preset-apollos": "^1.1.0-beta.0"
   },
   "dependencies": {
-    "@apollosproject/ui-kit": "^1.1.0-beta.0"
+    "@apollosproject/ui-kit": "^1.1.0-beta.0",
+    "prop-types": "15.6.1",
+    "react": "^16.8.3",
+    "react-apollo": "2.5.5",
+    "react-test-renderer": "16.6.1",
+    "waait": "^1.0.4"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "publishConfig": {
