@@ -11,7 +11,7 @@ export const render = async (component) => {
   return tree;
 };
 
-export const TestProvider = ({ children, mocks = [], ...props }) => (
+export const TestProvider = ({ children, mocks, ...props }) => (
   <UIProviders {...props}>
     <MockedProvider mocks={mocks}>{children}</MockedProvider>
   </UIProviders>
@@ -25,4 +25,8 @@ TestProvider.propTypes = {
       response: PropTypes.shape({}),
     })
   ),
+};
+
+TestProvider.defaultProps = {
+  mocks: [],
 };
