@@ -93,6 +93,7 @@ const HorizontalHighlightCard = withIsLoading(
     LabelComponent,
     labelText,
     theme,
+    ...props
   }) => (
     <ThemeMixin
       mixin={{
@@ -100,7 +101,7 @@ const HorizontalHighlightCard = withIsLoading(
         colors: get(theme, 'colors', {}),
       }}
     >
-      <Card isLoading={isLoading}>
+      <Card isLoading={isLoading} {...props}>
         <Image
           overlayType={'gradient-bottom'}
           customTheme={theme}
