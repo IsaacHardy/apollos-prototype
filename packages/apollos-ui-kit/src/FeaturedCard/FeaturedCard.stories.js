@@ -20,7 +20,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -37,7 +37,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -49,7 +49,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -63,7 +63,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -78,7 +78,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -91,7 +91,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -104,7 +104,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -117,7 +117,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -135,7 +135,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -148,7 +148,7 @@ storiesOf('ui-kit/FeaturedCard', module)
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
-      image={[
+      coverImage={[
         {
           uri: 'https://picsum.photos/800/1600/?random',
         },
@@ -162,11 +162,12 @@ storiesOf('ui-kit/FeaturedCard', module)
         title={
           'Are you telling me that you built a time machine out of a DeLorean?'
         }
-        image={[
+        coverImage={[
           {
             uri: 'https://picsum.photos/800/1600/?random',
           },
         ]}
+        hasAction
         theme={{
           colors: {
             primary: 'salmon',
@@ -178,7 +179,7 @@ storiesOf('ui-kit/FeaturedCard', module)
         title={
           'Are you telling me that you built a time machine out of a DeLorean?'
         }
-        image={[
+        coverImage={[
           {
             uri: 'https://picsum.photos/800/1600/?random',
           },
@@ -191,13 +192,14 @@ storiesOf('ui-kit/FeaturedCard', module)
         title={
           'Are you telling me that you built a time machine out of a DeLorean?'
         }
-        image={[
+        coverImage={[
           {
             uri: 'https://picsum.photos/800/1600/?random',
           },
         ]}
         isLive
         isLiked
+        hasAction
         theme={{
           type: 'light',
           colors: {

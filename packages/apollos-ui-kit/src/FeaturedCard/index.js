@@ -122,7 +122,7 @@ const renderWithDescription = (title, actionIcon, description, hasAction) => (
 
 const FeaturedCard = withIsLoading(
   ({
-    image,
+    coverImage,
     title,
     actionIcon,
     description,
@@ -141,7 +141,7 @@ const FeaturedCard = withIsLoading(
       }}
     >
       <StyledCard isLoading={isLoading}>
-        <Image source={image} overlayType={'featured'} />
+        <Image source={coverImage} overlayType={'featured'} />
 
         <Content>
           {renderLabel(description, LabelComponent, labelText, isLive, theme)}
@@ -158,7 +158,7 @@ const FeaturedCard = withIsLoading(
 );
 
 FeaturedCard.propTypes = {
-  image: PropTypes.oneOfType([
+  coverImage: PropTypes.oneOfType([
     PropTypes.arrayOf(ImageSourceType),
     ImageSourceType,
   ]).isRequired,
