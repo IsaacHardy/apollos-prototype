@@ -118,7 +118,7 @@ const renderWithSummary = (title, actionIcon, summary, hasAction) => (
 
 const HighlightCard = withIsLoading(
   ({
-    image,
+    coverImage,
     title,
     actionIcon,
     summary,
@@ -139,7 +139,7 @@ const HighlightCard = withIsLoading(
         <Image
           overlayType={'gradient-bottom'}
           customTheme={theme}
-          source={image}
+          source={coverImage}
         />
         <Content>
           {renderLabel(summary, LabelComponent, labelText, theme)}
@@ -156,7 +156,7 @@ const HighlightCard = withIsLoading(
 );
 
 HighlightCard.propTypes = {
-  image: PropTypes.oneOfType([
+  coverImage: PropTypes.oneOfType([
     PropTypes.arrayOf(ImageSourceType),
     ImageSourceType,
   ]).isRequired,

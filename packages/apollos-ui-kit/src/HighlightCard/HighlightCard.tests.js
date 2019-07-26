@@ -14,7 +14,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -31,7 +31,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/1600/800/?random',
             },
@@ -48,7 +48,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -67,7 +67,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -87,7 +87,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -105,7 +105,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -123,7 +123,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -141,7 +141,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -164,7 +164,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -182,7 +182,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
@@ -200,7 +200,7 @@ describe('HighlightCard', () => {
           title={
             'Are you telling me that you built a time machine out of a DeLorean?'
           }
-          image={[
+          coverImage={[
             {
               uri: 'https://picsum.photos/800/1600/?random',
             },
