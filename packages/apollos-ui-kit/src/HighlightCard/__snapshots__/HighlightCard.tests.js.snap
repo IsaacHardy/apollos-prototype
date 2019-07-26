@@ -168,7 +168,7 @@ exports[`HighlightCard should render a loading state with isLoading 1`] = `
             }
           />
           <View
-            hasDescription={true}
+            hasSummary={true}
             style={
               Object {
                 "alignItems": "center",
@@ -390,7 +390,7 @@ exports[`HighlightCard should render in a "tall" aspect ratio (maxAspectRatio) 1
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -709,7 +709,7 @@ exports[`HighlightCard should render in a "wide" aspect ratio 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -1028,7 +1028,7 @@ exports[`HighlightCard should render with a custom actionIcon 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -1469,7 +1469,7 @@ exports[`HighlightCard should render with a custom theme 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -1634,7 +1634,7 @@ exports[`HighlightCard should render with a custom theme 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`HighlightCard should render with a description 1`] = `
+exports[`HighlightCard should render with a summary 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -1801,7 +1801,7 @@ exports[`HighlightCard should render with a description 1`] = `
             Are you telling me that you built a time machine out of a DeLorean?
           </Text>
           <View
-            hasDescription={true}
+            hasSummary={true}
             style={
               Object {
                 "alignItems": "center",
@@ -2176,7 +2176,7 @@ exports[`HighlightCard should render with custom LabelComponent 1`] = `
             </Text>
           </View>
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -2549,7 +2549,7 @@ exports[`HighlightCard should render with custom labelText 1`] = `
             </Text>
           </View>
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -2868,7 +2868,7 @@ exports[`HighlightCard should should render as isLiked 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -3188,7 +3188,7 @@ exports[`HighlightCard should should render as isLive 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",
@@ -3507,7 +3507,7 @@ exports[`HighlightCard should should render with an action "button" 1`] = `
           }
         >
           <View
-            hasDescription={false}
+            hasSummary={false}
             style={
               Object {
                 "alignItems": "flex-end",

@@ -26,7 +26,7 @@ storiesOf('ui-kit/HighlightCard', module)
             uri: 'https://picsum.photos/800/1600/?random',
           },
         ]}
-        description={
+        summary={
           'The way I see it, if you’re going to build a time machine into a car, why not do it with some style?'
         }
         hasAction
@@ -41,7 +41,7 @@ storiesOf('ui-kit/HighlightCard', module)
             uri: 'https://picsum.photos/1600/800/?random',
           },
         ]}
-        description={
+        summary={
           'The way I see it, if you’re going to build a time machine into a car, why not do it with some style?'
         }
         hasAction
@@ -56,7 +56,7 @@ storiesOf('ui-kit/HighlightCard', module)
             uri: 'https://picsum.photos/800/800/?random',
           },
         ]}
-        description={
+        summary={
           'The way I see it, if you’re going to build a time machine into a car, why not do it with some style?'
         }
         hasAction
@@ -90,7 +90,7 @@ storiesOf('ui-kit/HighlightCard', module)
       hasAction
     />
   ))
-  .add('description', () => (
+  .add('summary', () => (
     <HighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
@@ -100,7 +100,7 @@ storiesOf('ui-kit/HighlightCard', module)
           uri: 'https://picsum.photos/800/1600/?random',
         },
       ]}
-      description={
+      summary={
         'The way I see it, if you’re going to build a time machine into a car, why not do it with some style?'
       }
     />
@@ -128,7 +128,7 @@ storiesOf('ui-kit/HighlightCard', module)
           uri: 'https://picsum.photos/800/1600/?random',
         },
       ]}
-      description={
+      summary={
         'The way I see it, if you’re going to build a time machine into a car, why not do it with some style?'
       }
       hasAction
@@ -206,6 +206,7 @@ storiesOf('ui-kit/HighlightCard', module)
           },
         ]}
         labelText={'Quote'}
+        hasAction
         isLiked
         theme={{
           type: 'light',
