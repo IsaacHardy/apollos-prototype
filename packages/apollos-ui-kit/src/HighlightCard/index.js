@@ -54,7 +54,7 @@ const Content = styled(
 const ActionLayout = styled(
   ({ theme, hasSummary }) => ({
     flexDirection: 'row',
-    /* - `center` works in all situations including 1 line summarys
+    /* - `center` works in all situations including 1 line summaries
      * - `flex-end` is needed only for when we have no summary
      */
     alignItems: hasSummary ? 'center' : 'flex-end',
