@@ -121,12 +121,12 @@ const HighlightCard = withIsLoading(
     coverImage,
     title,
     actionIcon,
-    summary,
     hasAction,
     isLiked,
     isLoading,
     LabelComponent,
     labelText,
+    summary,
     theme,
   }) => (
     <ThemeMixin
@@ -162,11 +162,11 @@ HighlightCard.propTypes = {
   ]).isRequired,
   title: PropTypes.string.isRequired,
   actionIcon: PropTypes.string,
-  summary: PropTypes.string,
   hasAction: PropTypes.bool,
   isLiked: PropTypes.bool,
   LabelComponent: PropTypes.element,
   labelText: PropTypes.string,
+  summary: PropTypes.string,
   theme: PropTypes.shape({
     type: PropTypes.string,
     colors: PropTypes.shape({}),
