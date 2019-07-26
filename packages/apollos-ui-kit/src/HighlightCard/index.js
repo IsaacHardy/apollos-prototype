@@ -174,7 +174,7 @@ HighlightCard.propTypes = {
 };
 
 HighlightCard.defaultProps = {
-  actionIcon: 'play-solid',
+  actionIcon: 'play-opaque',
 };
 
 export default HighlightCard;
