@@ -19,7 +19,7 @@ const LikeIconPositioning = styled(
     top: theme.sizing.baseUnit * 1.5,
     right: theme.sizing.baseUnit * 1.5,
   }),
-  'ui-kit.TileCard.LikeIconPositioning'
+  'ui-kit.HorizontalHighlightCard.LikeIconPositioning'
 )(View);
 
 const LikeIcon = withTheme(({ theme, isLiked }) => ({
@@ -43,7 +43,7 @@ const Content = styled(
     paddingHorizontal: theme.sizing.baseUnit * 1.5, // TODO: refactor CardContent to have this be the default
     paddingBottom: theme.sizing.baseUnit * 2, // TODO: refactor CardContent to have this be the default
   }),
-  'ui-kit.TileCard.Content'
+  'ui-kit.HorizontalHighlightCard.Content'
 )(CardContent);
 
 const ActionLayout = styled(
@@ -52,7 +52,7 @@ const ActionLayout = styled(
     alignItems: 'flex-end',
     paddingTop: theme.sizing.baseUnit,
   }),
-  'ui-kit.TileCard.ActionLayout'
+  'ui-kit.HorizontalHighlightCard.ActionLayout'
 )(View);
 
 const FlexedActionLayoutText = styled(({ theme }) => ({
@@ -82,7 +82,7 @@ const renderLabel = (LabelComponent, labelText, theme) => {
   return ComponentToRender;
 };
 
-const TileCard = withIsLoading(
+const HorizontalHighlightCard = withIsLoading(
   ({
     coverImage,
     title,
@@ -123,7 +123,7 @@ const TileCard = withIsLoading(
   )
 );
 
-TileCard.propTypes = {
+HorizontalHighlightCard.propTypes = {
   coverImage: PropTypes.oneOfType([
     PropTypes.arrayOf(ImageSourceType),
     ImageSourceType,
@@ -140,8 +140,8 @@ TileCard.propTypes = {
   }),
 };
 
-TileCard.defaultProps = {
+HorizontalHighlightCard.defaultProps = {
   actionIcon: 'play-solid',
 };
 
-export default TileCard;
+export default HorizontalHighlightCard;

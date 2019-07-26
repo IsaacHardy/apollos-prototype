@@ -6,9 +6,9 @@ import BackgroundView from '../BackgroundView';
 import CenteredView from '../CenteredView';
 import { CardLabel } from '../Card';
 
-import TileCard from '.';
+import HorizontalHighlightCard from '.';
 
-storiesOf('ui-kit/TileCard', module)
+storiesOf('ui-kit/HorizontalHighlightCard', module)
   .addDecorator((story) => (
     <BackgroundView>
       {/* eslint-disable-next-line react-native/no-inline-styles */}
@@ -16,7 +16,7 @@ storiesOf('ui-kit/TileCard', module)
     </BackgroundView>
   ))
   .add('default', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -28,7 +28,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('actionIcon', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -42,7 +42,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('hasAction', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -55,7 +55,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('isLoading', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -70,7 +70,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('LabelComponent', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -83,7 +83,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('labelText', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -96,7 +96,7 @@ storiesOf('ui-kit/TileCard', module)
     />
   ))
   .add('theme', () => (
-    <TileCard
+    <HorizontalHighlightCard
       title={
         'Are you telling me that you built a time machine out of a DeLorean?'
       }
@@ -114,7 +114,7 @@ storiesOf('ui-kit/TileCard', module)
   ))
   .add('theme', () => (
     <ScrollView>
-      <TileCard
+      <HorizontalHighlightCard
         title={
           'Are you telling me that you built a time machine out of a DeLorean?'
         }
@@ -129,7 +129,7 @@ storiesOf('ui-kit/TileCard', module)
           },
         }}
       />
-      <TileCard
+      <HorizontalHighlightCard
         title={
           'Are you telling me that you built a time machine out of a DeLorean?'
         }
