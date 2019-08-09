@@ -10,7 +10,7 @@ import AboutYou from './AboutYou';
 import UPDATE_USER_DETAILS from './updateUserDetails';
 
 const AboutYouConnected = memo(
-  ({ Component, onPressPrimary, onPressSecondary, ...props }) => (
+  ({ Component, onPressPrimary, onPressSecondary, onCompleted, ...props }) => (
     <Query query={GET_USER_GENDER_AND_BIRTH_DATE}>
       {({ data: { currentUser = { profile: {} } } = {}, loading = false }) => {
         const { gender, birthDate } = currentUser.profile;
@@ -34,6 +34,7 @@ const AboutYouConnected = memo(
                 ) => {
                   try {
                     await updateDetails({ variables });
+                    onCompleted();
                     onPressPrimary(); // advance to the next slide after submission
                   } catch (e) {
                     const { graphQLErrors } = e;
@@ -102,6 +103,7 @@ AboutYouConnected.propTypes = {
   ]),
   onPressPrimary: PropTypes.func,
   onPressSecondary: PropTypes.func,
+  onCompleted: PropTypes.func,
 };
 
 AboutYouConnected.defaultProps = {

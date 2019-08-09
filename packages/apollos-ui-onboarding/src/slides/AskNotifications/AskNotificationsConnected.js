@@ -12,30 +12,37 @@ const AskNotificationsConnected = memo(
     onPressPrimary,
     onPressSecondary,
     onRequestPushPermissions,
+    onCompleted,
     ...props
-  }) => (
-    <Query query={GET_NOTIFICATIONS_ENABLED}>
-      {({ data: { notificationsEnabled = false } = {} }) => (
-        <Component
-          onPressButton={() => onRequestPushPermissions()}
-          buttonDisabled={notificationsEnabled}
-          buttonText={
-            notificationsEnabled
-              ? 'Notifications Enabled!'
-              : 'Yes, enable notifications'
-          }
-          onPressPrimary={notificationsEnabled ? onPressPrimary : null} // if notifications are enabled show the primary nav button (next/finish)
-          onPressSecondary={
-            // if notifications are not enabled show the secondary nav button (skip)
-            notificationsEnabled ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
-          }
-          pressPrimaryEventName={'Ask Notifications Completed'}
-          pressSecondaryEventName={'Ask Notifications Skipped'}
-          {...props}
-        />
-      )}
-    </Query>
-  )
+  }) => {
+    const complete = () => {
+      onCompleted();
+      onPressPrimary();
+    };
+    return (
+      <Query query={GET_NOTIFICATIONS_ENABLED}>
+        {({ data: { notificationsEnabled = false } = {} }) => (
+          <Component
+            onPressButton={() => onRequestPushPermissions()}
+            buttonDisabled={notificationsEnabled}
+            buttonText={
+              notificationsEnabled
+                ? 'Notifications Enabled!'
+                : 'Yes, enable notifications'
+            }
+            onPressPrimary={notificationsEnabled ? complete : null} // if notifications are enabled show the primary nav button (next/complete)
+            onPressSecondary={
+              // if notifications are not enabled show the secondary nav button (skip)
+              notificationsEnabled ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
+            }
+            pressPrimaryEventName={'Ask Notifications Completed'}
+            pressSecondaryEventName={'Ask Notifications Skipped'}
+            {...props}
+          />
+        )}
+      </Query>
+    );
+  }
 );
 
 AskNotificationsConnected.propTypes = {
@@ -43,6 +50,7 @@ AskNotificationsConnected.propTypes = {
   onPressPrimary: PropTypes.func,
   onPressSecondary: PropTypes.func,
   onRequestPushPermissions: PropTypes.func.isRequired,
+  onCompleted: PropTypes.func,
 };
 
 AskNotificationsConnected.defaultProps = {

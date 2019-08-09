@@ -11,7 +11,7 @@ import UPDATE_USER_NAME from './updateUserName';
 
 // eslint-disable-next-line react/display-name
 const AskNameConnected = memo(
-  ({ Component, onPressPrimary, onPressSecondary, ...props }) => (
+  ({ Component, onPressPrimary, onPressSecondary, onCompleted, ...props }) => (
     <Query query={GET_USER_FIRST_AND_LAST_NAME}>
       {({ loading, data: { currentUser = { profile: {} } } = {} }) => {
         const { firstName, lastName } = currentUser.profile;
@@ -37,6 +37,7 @@ const AskNameConnected = memo(
                 ) => {
                   try {
                     await updateName({ variables });
+                    onCompleted();
                     onPressPrimary();
                   } catch (e) {
                     const { graphQLErrors } = e;
@@ -105,6 +106,7 @@ AskNameConnected.propTypes = {
   ]),
   onPressPrimary: PropTypes.func,
   onPressSecondary: PropTypes.func,
+  onCompleted: PropTypes.func,
 };
 
 AskNameConnected.defaultProps = {

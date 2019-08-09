@@ -8,6 +8,11 @@ import LocationFinder from './LocationFinder';
 class LocationFinderConnected extends PureComponent {
   state = { selectedCampus: false };
 
+  complete = () => {
+    this.props.onCompleted();
+    this.props.onPressPrimary();
+  };
+
   render() {
     return (
       <Query query={GET_USER_CAMPUS} fetchPolicy="cache-and-network">
@@ -29,8 +34,9 @@ class LocationFinderConnected extends PureComponent {
                   track({ eventName: 'LocationFinder Opened MapView' });
                 }}
                 onPressPrimary={
+                  // TODO this will also verify location permissions in another PR
                   campus /* show the primary action button (next) if we have a campus */
-                    ? this.props.onPressPrimary
+                    ? this.complete
                     : null
                 }
                 onPressSecondary={
@@ -61,6 +67,7 @@ LocationFinderConnected.propTypes = {
   ]),
   onPressPrimary: PropTypes.func,
   onNavigate: PropTypes.func.isRequired,
+  onCompleted: PropTypes.func,
 };
 
 LocationFinderConnected.defaultProps = {

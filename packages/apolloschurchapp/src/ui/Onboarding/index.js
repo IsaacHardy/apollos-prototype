@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint no-bitwise: [2, { allow: ["|"] }] */
+import React, { useState, useEffect } from 'react';
 
 import { GradientOverlayImage, styled } from '@apollosproject/ui-kit';
 import { ApolloConsumer } from 'react-apollo';
@@ -10,6 +11,7 @@ import {
   AboutYouConnected,
   LocationFinderConnected,
   OnboardingSwiper,
+  setOnboardingComplete,
 } from '@apollosproject/ui-onboarding';
 
 import { requestPushPermissions } from '@apollosproject/ui-notifications';
@@ -18,12 +20,24 @@ const StyledGradient = styled({
   maxHeight: '40%',
 })(GradientOverlayImage);
 
-function Onboarding({ navigation }) {
+const Onboarding = ({ navigation }) => {
+  // bitwise flags for each screen
+  // NOTE: if a screen is added, a new flag needs to be accounted for
+  const [completed, setCompleted] = useState(0);
+
+  // if every screen has been completed, skip onboarding
+  useEffect(() => {
+    if (completed === 15) navigation.replace('Tabs');
+  });
+
   return (
     <OnboardingSwiper>
       {({ swipeForward }) => (
         <>
-          <AskNameConnected onPressPrimary={swipeForward} />
+          <AskNameConnected
+            onPressPrimary={swipeForward}
+            onCompleted={() => setCompleted(completed | 1)}
+          />
           <FeaturesConnected
             onPressPrimary={swipeForward}
             BackgroundComponent={
@@ -34,6 +48,7 @@ function Onboarding({ navigation }) {
           />
           <AboutYouConnected
             onPressPrimary={swipeForward}
+            onCompleted={() => setCompleted(completed | 2)}
             BackgroundComponent={
               <StyledGradient
                 source={'https://picsum.photos/640/640/?random'}
@@ -42,6 +57,7 @@ function Onboarding({ navigation }) {
           />
           <LocationFinderConnected
             onPressPrimary={swipeForward}
+            onCompleted={() => setCompleted(completed | 4)}
             onNavigate={() => {
               navigation.navigate('Location', {
                 onFinished: swipeForward,
@@ -56,7 +72,11 @@ function Onboarding({ navigation }) {
           <ApolloConsumer>
             {(client) => (
               <AskNotificationsConnected
-                onPressPrimary={() => navigation.replace('Tabs')}
+                onPressPrimary={() => {
+                  if (completed === 15) setOnboardingComplete({ client });
+                  navigation.replace('Tabs');
+                }}
+                onCompleted={() => setCompleted(completed | 8)}
                 onRequestPushPermissions={() =>
                   requestPushPermissions({ client })
                 }
@@ -73,7 +93,7 @@ function Onboarding({ navigation }) {
       )}
     </OnboardingSwiper>
   );
-}
+};
 
 Onboarding.navigationOptions = {
   title: 'Onboarding',
