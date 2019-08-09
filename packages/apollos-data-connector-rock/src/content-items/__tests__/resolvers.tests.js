@@ -185,6 +185,7 @@ describe('UniversalContentItem', () => {
         headers: { authorization: token },
       },
     });
+    context.dataSources.ContentItem.getShareURL = jest.fn(() => 'fakeurl.com');
   });
 
   it('gets a user feed', async () => {

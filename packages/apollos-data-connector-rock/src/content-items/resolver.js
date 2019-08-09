@@ -46,7 +46,7 @@ export const defaultContentItemResolvers = {
   theme: () => null, // todo: integrate themes from Rock
 
   sharing: (root, args, { dataSources: { ContentItem } }) => ({
-    url: 'https://apollosrock.newspring.cc/', // TODO: return a dynamic url that links to the content item
+    url: ContentItem.getShareURL(root.id, root.contentChannelId),
     title: 'Share via ...',
     message: `${root.title} - ${ContentItem.createSummary(root)}`,
   }),
