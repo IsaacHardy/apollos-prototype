@@ -52,9 +52,9 @@ describe('ContentItemsModel', () => {
     };
     dataSource.get = jest.fn(() => ({ slug: 'cool-article' }));
     const result = 'https://apollorock.newspring.cc/news/cool-article';
-    expect(dataSource.getShareURL('fakeID', 'fakeChannel')).resolves.toEqual(
-      result
-    );
+    expect(
+      dataSource.getShareURL({ contentID: 'fakeID', channelID: 'fakeChannel' })
+    ).resolves.toEqual(result);
   });
 
   it('filters by content channel id', () => {
