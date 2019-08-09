@@ -192,12 +192,12 @@ export default class ContentItem extends RockApolloDataSource {
       : tokens[0];
   };
 
-  getShareURL = async (id, contentChannelId) => {
+  getShareURL = async ({ contentID, channelID }) => {
     const contentChannel = await this.context.dataSources.ContentChannel.getFromId(
-      contentChannelId
+      channelID
     );
     const slug = await this.request('ContentChannelItemSlugs')
-      .filter(`ContentChannelItemId eq ${id}`)
+      .filter(`ContentChannelItemId eq ${contentID}`)
       .first();
     if (!contentChannel.itemUrl) return ROCK.SHARE_URL;
     return `${ROCK.SHARE_URL + contentChannel.itemUrl}/${
