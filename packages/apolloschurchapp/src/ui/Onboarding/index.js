@@ -27,8 +27,11 @@ const Onboarding = ({ navigation }) => {
 
   // if every screen has been completed, skip onboarding
   useEffect(() => {
-    if (completed === 15) navigation.replace('Tabs');
-  });
+    if (completed === 15) {
+      navigation.replace('Tabs');
+      // TODO async store the user ID
+    }
+  }, [completed]);
 
   return (
     <OnboardingSwiper>
