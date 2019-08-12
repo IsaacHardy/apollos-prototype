@@ -1,5 +1,6 @@
 /* eslint no-bitwise: [2, { allow: ["|"] }] */
 import React, { useState, useEffect } from 'react';
+import { AsyncStorage } from 'react-native';
 
 import { GradientOverlayImage, styled } from '@apollosproject/ui-kit';
 import { ApolloConsumer } from 'react-apollo';
@@ -26,10 +27,17 @@ const Onboarding = ({ navigation }) => {
   const [completed, setCompleted] = useState(0);
 
   // if every screen has been completed, skip onboarding
-  useEffect(() => {
+  useEffect(async () => {
+    const usersStr = await AsyncStorage.getItem('onboardedUsers');
+    const users = JSON.parse(usersStr);
     if (completed === 15) {
+      await AsyncStorage.setItem(
+        'onboardedUsers',
+        JSON.stringify(users + [currentUser.id])
+      );
+    }
+    if (JSON.parse(users).includes(currentUser.id)) {
       navigation.replace('Tabs');
-      // TODO async store the user ID
     }
   }, [completed]);
 
