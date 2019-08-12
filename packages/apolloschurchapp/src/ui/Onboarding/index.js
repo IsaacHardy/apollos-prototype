@@ -33,10 +33,10 @@ const Onboarding = ({ navigation }) => {
     if (completed === 15) {
       await AsyncStorage.setItem(
         'onboardedUsers',
-        JSON.stringify(users.concat([currentUser.id]))
+        JSON.stringify(users.concat([userId]))
       );
     }
-    if (JSON.parse(users).includes(currentUser.id)) {
+    if (JSON.parse(users).includes([userId])) {
       navigation.replace('Tabs');
     }
   }, [completed]);
