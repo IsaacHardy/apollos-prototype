@@ -33,7 +33,7 @@ const Onboarding = ({ navigation }) => {
     if (completed === 15) {
       await AsyncStorage.setItem(
         'onboardedUsers',
-        JSON.stringify(users + [currentUser.id])
+        JSON.stringify(users.concat([currentUser.id]))
       );
     }
     if (JSON.parse(users).includes(currentUser.id)) {
