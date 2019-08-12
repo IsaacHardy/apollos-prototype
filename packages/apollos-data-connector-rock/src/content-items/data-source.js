@@ -192,17 +192,22 @@ export default class ContentItem extends RockApolloDataSource {
       : tokens[0];
   };
 
-  getShareURL = async ({ contentID, channelID }) => {
+  getShareUrl = async ({ contentId, channelId }) => {
     const contentChannel = await this.context.dataSources.ContentChannel.getFromId(
-      channelID
+      channelId
     );
-    const slug = await this.request('ContentChannelItemSlugs')
-      .filter(`ContentChannelItemId eq ${contentID}`)
-      .first();
+
     if (!contentChannel.itemUrl) return ROCK.SHARE_URL;
-    return `${ROCK.SHARE_URL + contentChannel.itemUrl}/${
-      slug ? slug.slug : ''
-    }`;
+
+    const slug = await this.request('ContentChannelItemSlugs')
+      .filter(`ContentChannelItemId eq ${contentId}`)
+      .first();
+
+    return [
+      ROCK.SHARE_URL,
+      contentChannel.itemUrl.replace(/^\//, ''),
+      slug ? slug.slug : '',
+    ].join('/');
   };
 
   getSermonFeed() {
