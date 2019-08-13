@@ -1,4 +1,3 @@
-/* eslint no-bitwise: [2, { allow: ["|"] }] */
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage } from 'react-native';
 
@@ -41,6 +40,7 @@ const Onboarding = ({ navigation }) => {
     const { data } = await client.query({
       query: GET_USER_PROFILE,
     });
+    /* eslint-disable-next-line no-bitwise */
     setCompleted(completed | flag);
     setUser(data.currentUser.id);
   };
