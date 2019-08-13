@@ -12,10 +12,10 @@ import {
   AboutYouConnected,
   LocationFinderConnected,
   OnboardingSwiper,
-  setOnboardingComplete,
 } from '@apollosproject/ui-onboarding';
 
 import { requestPushPermissions } from '@apollosproject/ui-notifications';
+import GET_USER_PROFILE from '../../tabs/connect/getUserProfile';
 
 const StyledGradient = styled({
   maxHeight: '40%',
@@ -24,19 +24,26 @@ const StyledGradient = styled({
 const Onboarding = ({ navigation }) => {
   // bitwise flags for each screen
   // NOTE: if a screen is added, a new flag needs to be accounted for
-  const [completed, setCompleted] = useState(0);
+  const [completed, setCompleted] = useState(['', 0]);
+
+  const complete = async (client, flag) => {
+    const { data } = await client.query({
+      query: GET_USER_PROFILE,
+    });
+    setCompleted([data.currentUser.id, completed | flag]);
+  };
 
   // if every screen has been completed, skip onboarding
   useEffect(async () => {
     const usersStr = await AsyncStorage.getItem('onboardedUsers');
     const users = JSON.parse(usersStr);
-    if (completed === 15) {
+    if (completed[1] === 15) {
       await AsyncStorage.setItem(
         'onboardedUsers',
-        JSON.stringify(users.concat([userId]))
+        JSON.stringify(users.concat([completed[0]]))
       );
     }
-    if (JSON.parse(users).includes([userId])) {
+    if (JSON.parse(users).includes([completed[0]])) {
       navigation.replace('Tabs');
     }
   }, [completed]);
@@ -44,50 +51,47 @@ const Onboarding = ({ navigation }) => {
   return (
     <OnboardingSwiper>
       {({ swipeForward }) => (
-        <>
-          <AskNameConnected
-            onPressPrimary={swipeForward}
-            onCompleted={() => setCompleted(completed | 1)}
-          />
-          <FeaturesConnected
-            onPressPrimary={swipeForward}
-            BackgroundComponent={
-              <StyledGradient
-                source={'https://picsum.photos/640/640/?random'}
+        <ApolloConsumer>
+          {(client) => (
+            <>
+              <AskNameConnected
+                onPressPrimary={swipeForward}
+                onCompleted={() => complete(client, 1)}
               />
-            }
-          />
-          <AboutYouConnected
-            onPressPrimary={swipeForward}
-            onCompleted={() => setCompleted(completed | 2)}
-            BackgroundComponent={
-              <StyledGradient
-                source={'https://picsum.photos/640/640/?random'}
+              <FeaturesConnected
+                onPressPrimary={swipeForward}
+                BackgroundComponent={
+                  <StyledGradient
+                    source={'https://picsum.photos/640/640/?random'}
+                  />
+                }
               />
-            }
-          />
-          <LocationFinderConnected
-            onPressPrimary={swipeForward}
-            onCompleted={() => setCompleted(completed | 4)}
-            onNavigate={() => {
-              navigation.navigate('Location', {
-                onFinished: swipeForward,
-              });
-            }}
-            BackgroundComponent={
-              <StyledGradient
-                source={'https://picsum.photos/640/640/?random'}
+              <AboutYouConnected
+                onPressPrimary={swipeForward}
+                onCompleted={() => complete(client, 2)}
+                BackgroundComponent={
+                  <StyledGradient
+                    source={'https://picsum.photos/640/640/?random'}
+                  />
+                }
               />
-            }
-          />
-          <ApolloConsumer>
-            {(client) => (
-              <AskNotificationsConnected
-                onPressPrimary={() => {
-                  if (completed === 15) setOnboardingComplete({ client });
-                  navigation.replace('Tabs');
+              <LocationFinderConnected
+                onPressPrimary={swipeForward}
+                onCompleted={() => complete(client, 4)}
+                onNavigate={() => {
+                  navigation.navigate('Location', {
+                    onFinished: swipeForward,
+                  });
                 }}
-                onCompleted={() => setCompleted(completed | 8)}
+                BackgroundComponent={
+                  <StyledGradient
+                    source={'https://picsum.photos/640/640/?random'}
+                  />
+                }
+              />
+              <AskNotificationsConnected
+                onPressPrimary={() => navigation.replace('Tabs')}
+                onCompleted={() => complete(client, 8)}
                 onRequestPushPermissions={() =>
                   requestPushPermissions({ client })
                 }
@@ -98,9 +102,9 @@ const Onboarding = ({ navigation }) => {
                   />
                 }
               />
-            )}
-          </ApolloConsumer>
-        </>
+            </>
+          )}
+        </ApolloConsumer>
       )}
     </OnboardingSwiper>
   );
