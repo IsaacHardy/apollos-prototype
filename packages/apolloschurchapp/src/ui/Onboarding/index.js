@@ -34,26 +34,28 @@ const StyledGradient = styled({
 const Onboarding = ({ navigation }) => {
   // bitwise flags for each screen
   // NOTE: if a screen is added, a new flag needs to be accounted for
-  const [completed, setCompleted] = useState(['', 0]);
+  const [completed, setCompleted] = useState(0);
+  const [user, setUser] = useState('');
 
   const complete = async (client, flag) => {
     const { data } = await client.query({
       query: GET_USER_PROFILE,
     });
-    setCompleted([data.currentUser.id, completed | flag]);
+    setCompleted(completed | flag);
+    setUser(data.currentUser.id);
   };
 
   // if every screen has been completed, skip onboarding
   useEffect(async () => {
-    const usersStr = await AsyncStorage.getItem('onboardedUsers');
-    const users = JSON.parse(usersStr);
-    if (completed[1] === 15) {
+    const users = await AsyncStorage.getItem('onboardedUsers');
+    const usersObj = JSON.parse(users);
+    if (completed.flags === 15) {
       await AsyncStorage.setItem(
         'onboardedUsers',
-        JSON.stringify(users.concat([completed[0]]))
+        JSON.stringify(usersObj.concat([user]))
       );
     }
-    if (JSON.parse(users).includes([completed[0]])) {
+    if (JSON.parse(usersObj).includes([user])) {
       navigation.replace('Tabs');
     }
   }, [completed]);
