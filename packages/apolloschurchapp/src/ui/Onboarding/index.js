@@ -48,14 +48,15 @@ const Onboarding = ({ navigation }) => {
   // if every screen has been completed, skip onboarding
   useEffect(async () => {
     const users = await AsyncStorage.getItem('onboardedUsers');
-    const usersObj = JSON.parse(users);
-    if (completed.flags === 15) {
+    const userSet = new Set(users.split(','));
+    if (completed.flags === 15 || userSet.has(user)) {
       await AsyncStorage.setItem(
         'onboardedUsers',
-        JSON.stringify(usersObj.concat([user]))
+        userSet
+          .add(user)
+          .values()
+          .join(',')
       );
-    }
-    if (JSON.parse(usersObj).includes([user])) {
       navigation.replace('Tabs');
     }
   }, [completed]);
