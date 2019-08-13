@@ -11,7 +11,7 @@ import UPDATE_USER_NAME from './updateUserName';
 
 // eslint-disable-next-line react/display-name
 const AskNameConnected = memo(
-  ({ Component, onPressPrimary, onPressSecondary, onCompleted, ...props }) => (
+  ({ Component, onSwipe, onCompleted, ...props }) => (
     <Query query={GET_USER_FIRST_AND_LAST_NAME}>
       {({ loading, data: { currentUser = { profile: {} } } = {} }) => {
         const { firstName, lastName } = currentUser.profile;
@@ -38,7 +38,7 @@ const AskNameConnected = memo(
                   try {
                     await updateName({ variables });
                     onCompleted();
-                    onPressPrimary();
+                    onSwipe();
                   } catch (e) {
                     const { graphQLErrors } = e;
                     if (
@@ -71,11 +71,8 @@ const AskNameConnected = memo(
                   setFieldValue,
                 }) => (
                   <Component
-                    onPressPrimary={loading || isValid ? submitForm : null} // if form `isValid` show the primary nav button (next)
-                    onPressSecondary={
-                      // if form `!isValid` show the secondary nav button (skip)
-                      isValid ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
-                    }
+                    onPressPrimary={loading || isValid ? submitForm : null}
+                    onPressSecondary={isValid ? null : onSwipe}
                     pressPrimaryEventName={'Ask Name Completed'}
                     pressSecondaryEventName={'Ask Name Skipped'}
                     firstName={firstName}
@@ -104,8 +101,7 @@ AskNameConnected.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
-  onPressPrimary: PropTypes.func,
-  onPressSecondary: PropTypes.func,
+  onSwipe: PropTypes.func,
   onCompleted: PropTypes.func,
 };
 

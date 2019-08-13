@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   GradientOverlayImage,
@@ -36,45 +36,47 @@ const Onboarding = ({ navigation }) => {
   const [completed, setCompleted] = useState(0);
   const [user, setUser] = useState('');
 
+  // if every screen has been completed, skip onboarding
+  useEffect(() => {
+    const fetch = async () => {
+      const users = await AsyncStorage.getItem('onboardedUsers');
+      console.log('users', users);
+      console.log('completed', completed);
+      const userSet = new Set(users ? users.split(',') : []);
+      if (completed === 15 || userSet.has(user)) {
+        await AsyncStorage.setItem(
+          'onboardedUsers',
+          Array.from(userSet.add(user)).join(',')
+        );
+        navigation.replace('Tabs');
+      }
+    };
+    fetch();
+  }, [completed]);
+
   const complete = async (client, flag) => {
     const { data } = await client.query({
       query: GET_USER_PROFILE,
     });
+    setUser(data.currentUser.id);
     /* eslint-disable-next-line no-bitwise */
     setCompleted(completed | flag);
-    setUser(data.currentUser.id);
   };
-
-  // if every screen has been completed, skip onboarding
-  useEffect(async () => {
-    const users = await AsyncStorage.getItem('onboardedUsers');
-    const userSet = new Set(users.split(','));
-    if (completed.flags === 15 || userSet.has(user)) {
-      await AsyncStorage.setItem(
-        'onboardedUsers',
-        userSet
-          .add(user)
-          .values()
-          .join(',')
-      );
-      navigation.replace('Tabs');
-    }
-  }, [completed]);
 
   return (
     <>
       <FullscreenBackgroundView />
-      <OnboardingSwiper>
-        {({ swipeForward }) => (
-          <ApolloConsumer>
-            {(client) => (
+      <ApolloConsumer>
+        {(client) => (
+          <OnboardingSwiper>
+            {({ swipeForward }) => (
               <>
                 <AskNameConnected
-                  onPressPrimary={swipeForward}
-                  onCompleted={() => complete(client, 1)}
+                  onSwipe={swipeForward}
+                  onCompleted={async () => complete(client, 1)}
                 />
                 <FeaturesConnected
-                  onPressPrimary={swipeForward}
+                  onSwipe={swipeForward}
                   BackgroundComponent={
                     <StyledGradient
                       source={'https://picsum.photos/640/640/?random'}
@@ -82,8 +84,8 @@ const Onboarding = ({ navigation }) => {
                   }
                 />
                 <AboutYouConnected
-                  onPressPrimary={swipeForward}
-                  onCompleted={() => complete(client, 2)}
+                  onSwipe={swipeForward}
+                  onCompleted={async () => complete(client, 2)}
                   BackgroundComponent={
                     <StyledGradient
                       source={'https://picsum.photos/640/640/?random'}
@@ -91,8 +93,8 @@ const Onboarding = ({ navigation }) => {
                   }
                 />
                 <LocationFinderConnected
-                  onPressPrimary={swipeForward}
-                  onCompleted={() => complete(client, 4)}
+                  onSwipe={swipeForward}
+                  onCompleted={async () => complete(client, 4)}
                   onNavigate={() => navigation.navigate('Location')}
                   BackgroundComponent={
                     <StyledGradient
@@ -101,8 +103,8 @@ const Onboarding = ({ navigation }) => {
                   }
                 />
                 <AskNotificationsConnected
-                  onPressPrimary={() => navigation.replace('Tabs')}
-                  onCompleted={() => complete(client, 8)}
+                  onSwipe={() => navigation.replace('Tabs')}
+                  onCompleted={async () => complete(client, 8)}
                   onRequestPushPermissions={() =>
                     requestPushPermissions({ client })
                   }
@@ -115,9 +117,9 @@ const Onboarding = ({ navigation }) => {
                 />
               </>
             )}
-          </ApolloConsumer>
+          </OnboardingSwiper>
         )}
-      </OnboardingSwiper>
+      </ApolloConsumer>
     </>
   );
 };

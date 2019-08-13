@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Slide, { SlideContent } from '../../Slide';
 
 const Features = memo(
-  ({ firstName, description, BackgroundComponent, ...props }) => (
-    <Slide {...props}>
+  ({ firstName, description, BackgroundComponent, onSwipe, ...props }) => (
+    <Slide onPressPrimary={onSwipe} {...props}>
       {BackgroundComponent}
       <SlideContent
         title={`Hey ${firstName || 'friend'}!`}
@@ -32,6 +32,7 @@ Features.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  onSwipe: PropTypes.func,
 };
 
 Features.defaultProps = {

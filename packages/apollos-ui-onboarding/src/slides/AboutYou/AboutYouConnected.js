@@ -10,7 +10,7 @@ import AboutYou from './AboutYou';
 import UPDATE_USER_DETAILS from './updateUserDetails';
 
 const AboutYouConnected = memo(
-  ({ Component, onPressPrimary, onPressSecondary, onCompleted, ...props }) => (
+  ({ Component, onSwipe, onCompleted, ...props }) => (
     <Query query={GET_USER_GENDER_AND_BIRTH_DATE}>
       {({ data: { currentUser = { profile: {} } } = {}, loading = false }) => {
         const { gender, birthDate } = currentUser.profile;
@@ -35,7 +35,7 @@ const AboutYouConnected = memo(
                   try {
                     await updateDetails({ variables });
                     onCompleted();
-                    onPressPrimary(); // advance to the next slide after submission
+                    onSwipe(); // advance to the next slide after submission
                   } catch (e) {
                     const { graphQLErrors } = e;
                     if (
@@ -68,11 +68,8 @@ const AboutYouConnected = memo(
                   setFieldValue,
                 }) => (
                   <Component
-                    onPressPrimary={isValid ? submitForm : null} // if form `isValid` show the primary nav button (next)
-                    onPressSecondary={
-                      // if form `!isValid` show the secondary nav button (skip)
-                      isValid ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
-                    }
+                    onPressPrimary={isValid ? submitForm : null}
+                    onPressSecondary={isValid ? null : onSwipe}
                     pressPrimaryEventName={'About You Completed'}
                     pressSecondaryEventName={'About You Skipped'}
                     gender={gender}
@@ -101,8 +98,7 @@ AboutYouConnected.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
-  onPressPrimary: PropTypes.func,
-  onPressSecondary: PropTypes.func,
+  onSwipe: PropTypes.func,
   onCompleted: PropTypes.func,
 };
 

@@ -27,9 +27,9 @@ class LocationFinderConnected extends PureComponent {
     }
   }
 
-  complete = () => {
+  complete = async () => {
+    this.props.onSwipe();
     this.props.onCompleted();
-    this.props.onPressPrimary();
   };
 
   render() {
@@ -40,7 +40,7 @@ class LocationFinderConnected extends PureComponent {
         }) => (
           <AnalyticsConsumer>
             {({ track }) => {
-              const { onPressPrimary, ...otherProps } = this.props;
+              const { onSwipe, ...otherProps } = this.props;
               const showNextBtn = !!(campus && this.state.locationPermission);
 
               return (
@@ -49,10 +49,8 @@ class LocationFinderConnected extends PureComponent {
                     this.props.onNavigate();
                     track({ eventName: 'LocationFinder Opened MapView' });
                   }}
-                  // next button
                   onPressPrimary={showNextBtn ? this.complete : null}
-                  // skip button
-                  onPressSecondary={!showNextBtn ? onPressPrimary : null}
+                  onPressSecondary={showNextBtn ? null : onSwipe}
                   pressPrimaryEventName={'Ask Location Completed'}
                   pressSecondaryEventName={'Ask Location Skipped'}
                   buttonText={'Yes, find my local campus'}
@@ -70,7 +68,7 @@ class LocationFinderConnected extends PureComponent {
 
 LocationFinderConnected.propTypes = {
   Component: PropTypes.shape({}),
-  onPressPrimary: PropTypes.func,
+  onSwipe: PropTypes.func,
   onNavigate: PropTypes.func.isRequired,
   onCompleted: PropTypes.func,
 };
