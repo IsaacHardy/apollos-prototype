@@ -1296,20 +1296,50 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
           }
         }
       >
-        <Text
-          onPress={[MockFunction]}
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "color": "#A5A5A5",
-              "marginLeft": -16,
-              "paddingHorizontal": 16,
-              "paddingVertical": 15,
+              "opacity": 1,
             }
           }
-          trackEventName="About You Skipped"
         >
-          Skip
-        </Text>
+          <View
+            bordered={false}
+            disabled={false}
+            pill={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#00676D",
+                "borderColor": "#00676D",
+                "borderRadius": 48,
+                "borderWidth": 2,
+                "elevation": 2,
+                "flexDirection": "row",
+                "height": 48,
+                "justifyContent": "center",
+                "opacity": 1,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              }
+            }
+          >
+            <ActivityIndicator
+              animating={true}
+              color="#FFFFFF"
+              hidesWhenStopped={true}
+              size="small"
+            />
+          </View>
+        </View>
       </RCTSafeAreaView>
     </View>
   </View>

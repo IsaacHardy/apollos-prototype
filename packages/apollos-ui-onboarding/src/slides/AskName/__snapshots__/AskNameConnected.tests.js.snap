@@ -431,7 +431,7 @@ exports[`The AskNameConnected component renders User Name when logged in 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        onSubmitEditing={[Function]}
+                        onSubmitEditing={[MockFunction]}
                         placeholderTextColor="rgba(48, 48, 48, 0.6)"
                         rejectResponderTermination={true}
                         returnKeyType="next"
@@ -1181,7 +1181,7 @@ exports[`The AskNameConnected component renders in a default state 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        onSubmitEditing={[Function]}
+                        onSubmitEditing={[MockFunction]}
                         placeholderTextColor="rgba(48, 48, 48, 0.6)"
                         rejectResponderTermination={true}
                         returnKeyType="next"
@@ -1368,20 +1368,6 @@ exports[`The AskNameConnected component renders in a default state 1`] = `
             />
           </View>
         </View>
-        <Text
-          onPress={[MockFunction]}
-          style={
-            Object {
-              "color": "#A5A5A5",
-              "marginLeft": -16,
-              "paddingHorizontal": 16,
-              "paddingVertical": 15,
-            }
-          }
-          trackEventName="Ask Name Skipped"
-        >
-          Skip
-        </Text>
       </RCTSafeAreaView>
     </View>
   </View>
@@ -1820,7 +1806,7 @@ exports[`The AskNameConnected component renders loading state when fetching data
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        onSubmitEditing={[Function]}
+                        onSubmitEditing={[MockFunction]}
                         placeholderTextColor="rgba(48, 48, 48, 0.6)"
                         rejectResponderTermination={true}
                         returnKeyType="next"
@@ -2007,20 +1993,6 @@ exports[`The AskNameConnected component renders loading state when fetching data
             />
           </View>
         </View>
-        <Text
-          onPress={[MockFunction]}
-          style={
-            Object {
-              "color": "#A5A5A5",
-              "marginLeft": -16,
-              "paddingHorizontal": 16,
-              "paddingVertical": 15,
-            }
-          }
-          trackEventName="Ask Name Skipped"
-        >
-          Skip
-        </Text>
       </RCTSafeAreaView>
     </View>
   </View>
