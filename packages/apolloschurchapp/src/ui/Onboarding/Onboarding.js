@@ -1,3 +1,4 @@
+/* eslint no-bitwise: [2, { allow: ["|"] }] */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -7,7 +8,6 @@ import {
   styled,
   BackgroundView,
 } from '@apollosproject/ui-kit';
-import { ApolloConsumer } from 'react-apollo';
 
 import {
   AskNotificationsConnected,
@@ -39,7 +39,14 @@ const Onboarding = ({ client, navigation }) => {
 
   // if every screen has been completed, skip onboarding
   useEffect(() => {
-    const fetch = async () => {
+    const check = async () => {
+      if (user === '') {
+        const { data } = await client.query({
+          query: GET_USER_PROFILE,
+        });
+        setUser(data.currentUser.id);
+        return;
+      }
       const users = await AsyncStorage.getItem('onboardedUsers');
       const userSet = new Set(users ? users.split(',') : []);
       if (completed === 15 || userSet.has(user)) {
@@ -50,75 +57,62 @@ const Onboarding = ({ client, navigation }) => {
         navigation.replace('Tabs');
       }
     };
-    fetch();
-  }, [completed]);
-
-  const complete = async (client, flag) => {
-    const { data } = await client.query({
-      query: GET_USER_PROFILE,
-    });
-    setUser(data.currentUser.id);
-    /* eslint-disable-next-line no-bitwise */
-    setCompleted(completed | flag);
-  };
+    check();
+  }, [completed, user]);
 
   return (
     <>
       <FullscreenBackgroundView />
-      <ApolloConsumer>
-        {(client) => (
-          <OnboardingSwiper>
-            {({ swipeForward }) => (
-              <>
-                <AskNameConnected
-                  onSwipe={swipeForward}
-                  onCompleted={async () => complete(client, 1)}
+      <OnboardingSwiper>
+        {({ swipeForward }) => (
+          <>
+            <AskNameConnected
+              onSwipe={swipeForward}
+              onCompleted={async () => setCompleted(completed | 1)}
+            />
+            <FeaturesConnected
+              onSwipe={swipeForward}
+              BackgroundComponent={
+                <StyledGradient
+                  source={'https://picsum.photos/640/640/?random'}
                 />
-                <FeaturesConnected
-                  onSwipe={swipeForward}
-                  BackgroundComponent={
-                    <StyledGradient
-                      source={'https://picsum.photos/640/640/?random'}
-                    />
-                  }
+              }
+            />
+            <AboutYouConnected
+              onSwipe={swipeForward}
+              onCompleted={async () => setCompleted(completed | 2)}
+              BackgroundComponent={
+                <StyledGradient
+                  source={'https://picsum.photos/640/640/?random'}
                 />
-                <AboutYouConnected
-                  onSwipe={swipeForward}
-                  onCompleted={async () => complete(client, 2)}
-                  BackgroundComponent={
-                    <StyledGradient
-                      source={'https://picsum.photos/640/640/?random'}
-                    />
-                  }
+              }
+            />
+            <LocationFinderConnected
+              onSwipe={swipeForward}
+              onCompleted={async () => setCompleted(completed | 4)}
+              onNavigate={() => navigation.navigate('Location')}
+              BackgroundComponent={
+                <StyledGradient
+                  source={'https://picsum.photos/640/640/?random'}
                 />
-                <LocationFinderConnected
-                  onSwipe={swipeForward}
-                  onCompleted={async () => complete(client, 4)}
-                  onNavigate={() => navigation.navigate('Location')}
-                  BackgroundComponent={
-                    <StyledGradient
-                      source={'https://picsum.photos/640/640/?random'}
-                    />
-                  }
+              }
+            />
+            <AskNotificationsConnected
+              onSwipe={() => navigation.replace('Tabs')}
+              onCompleted={async () => setCompleted(completed | 8)}
+              onRequestPushPermissions={() =>
+                requestPushPermissions({ client })
+              }
+              primaryNavText={'Finish'}
+              BackgroundComponent={
+                <StyledGradient
+                  source={'https://picsum.photos/640/640/?random'}
                 />
-                <AskNotificationsConnected
-                  onSwipe={() => navigation.replace('Tabs')}
-                  onCompleted={async () => complete(client, 8)}
-                  onRequestPushPermissions={() =>
-                    requestPushPermissions({ client })
-                  }
-                  primaryNavText={'Finish'}
-                  BackgroundComponent={
-                    <StyledGradient
-                      source={'https://picsum.photos/640/640/?random'}
-                    />
-                  }
-                />
-              </>
-            )}
-          </OnboardingSwiper>
+              }
+            />
+          </>
         )}
-      </ApolloConsumer>
+      </OnboardingSwiper>
     </>
   );
 };

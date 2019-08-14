@@ -82,6 +82,7 @@ class OnboardingSwiper extends Component {
          * only back navigation option. */
         // scrollEnabled={false}
         showsButtons={false}
+        removeClippedSubviews={false}
         ref={this.setSwiperRef}
         renderPagination={this.renderPagination}
         activeDot={
