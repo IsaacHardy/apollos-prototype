@@ -30,5 +30,14 @@ storiesOf('ui-kit/Inputs', module).add('Text', () => (
       placeholder="Some placeholder"
       underline={false}
     />
+
+    <Text
+      editable
+      label="Use Prefix to Extend Design"
+      placeholder="Some placeholder"
+      prefix={
+        <View style={{ width: 50, height: 50, backgroundColor: 'red' }} />
+      }
+    />
   </FlexedView>
 ));
