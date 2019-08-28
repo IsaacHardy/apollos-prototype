@@ -88,6 +88,8 @@ const resolver = {
       }
       return null;
     },
+    series: ({ id }, args, { dataSources: { ContentItem } }) =>
+      ContentItem.getParent(id, ROCK_MAPPINGS.DEVOTIONAL_SERIES_CHANNEL_ID),
   },
   UniversalContentItem: {
     ...defaultContentItemResolvers,
@@ -108,6 +110,8 @@ const resolver = {
       ...(await LiveStream.getLiveStream()), // TODO: Wish there was a better way to inherit these defaults from the LiveStream module.
       isLive: await ContentItem.isContentActiveLiveStream(root), // We need to override the global IsLive with an IsLive that is contextual to a ContentItem
     }),
+    series: ({ id }, args, { dataSources: { ContentItem } }) =>
+      ContentItem.getParent(id, ROCK_MAPPINGS.SERMON_SERIES_CHANNEL_ID),
   },
   ContentItem: {
     ...defaultContentItemResolvers,

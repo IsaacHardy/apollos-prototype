@@ -105,6 +105,21 @@ export default class ContentItem extends RockApolloDataSource {
     }));
   };
 
+  getParent = async (childId, channelId) => {
+    const parentAssociations = await this.request(
+      'ContentChannelItemAssociations'
+    )
+      .filter(`ChildContentChannelItemId eq ${childId}`)
+      .get();
+    const parentFilter = parentAssociations.map(
+      ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
+    );
+    return this.request()
+      .filterOneOf(parentFilter)
+      .andFilter(`ContentChannelId eq ${channelId}`)
+      .first();
+  };
+
   getFeatures({ attributeValues }) {
     const { Features } = this.context.dataSources;
     const features = [];
