@@ -706,6 +706,9 @@ Object {
           "html": "<p class=\\"p\\"><span data-number=\\"1\\" class=\\"v\\">1</span>The Song of songs, which is Solomon’s.</p>",
         },
       ],
+      "series": Object {
+        "title": "SAMPLE: Easter",
+      },
       "title": "SAMPLE: Easter",
     },
   },

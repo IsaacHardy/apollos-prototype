@@ -304,7 +304,7 @@ describe('UniversalContentItem', () => {
         }
       }
     `;
-    context.dataSources.ContentItem.getParent = jest.fn(() =>
+    context.dataSources.DevotionalContentItem.getParent = jest.fn(() =>
       Promise.resolve({
         id: 123,
         contentChannelId: 6,
