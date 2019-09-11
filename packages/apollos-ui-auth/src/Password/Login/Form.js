@@ -22,16 +22,16 @@ class Form extends PureComponent {
   static propTypes = {
     setFieldValue: PropTypes.func,
     touched: PropTypes.shape({
-      email: PropTypes.shape({}),
-      password: PropTypes.shape({}),
+      email: PropTypes.string,
+      password: PropTypes.string,
     }),
     errors: PropTypes.shape({
-      email: PropTypes.shape({}),
-      password: PropTypes.shape({}),
+      email: PropTypes.string,
+      password: PropTypes.string,
     }),
     values: PropTypes.shape({
-      email: PropTypes.shape({}),
-      password: PropTypes.shape({}),
+      email: PropTypes.string,
+      password: PropTypes.string,
     }),
     handleSubmit: PropTypes.func,
     isSubmitting: PropTypes.bool,
