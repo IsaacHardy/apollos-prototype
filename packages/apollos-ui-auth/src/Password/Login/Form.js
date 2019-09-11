@@ -21,9 +21,18 @@ const Footer = styled({
 class Form extends PureComponent {
   static propTypes = {
     setFieldValue: PropTypes.func,
-    touched: PropTypes.shape({}),
-    errors: PropTypes.shape({}),
-    values: PropTypes.shape({}),
+    touched: PropTypes.shape({
+      email: PropTypes.shape({}),
+      password: PropTypes.shape({}),
+    }),
+    errors: PropTypes.shape({
+      email: PropTypes.shape({}),
+      password: PropTypes.shape({}),
+    }),
+    values: PropTypes.shape({
+      email: PropTypes.shape({}),
+      password: PropTypes.shape({}),
+    }),
     handleSubmit: PropTypes.func,
     isSubmitting: PropTypes.bool,
     isValid: PropTypes.bool,
