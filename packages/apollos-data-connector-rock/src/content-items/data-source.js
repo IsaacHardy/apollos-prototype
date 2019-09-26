@@ -297,14 +297,11 @@ export default class ContentItem extends RockApolloDataSource {
 
     if (!associations || !associations.length) return this.request().empty();
 
-    const request = this.request();
-
-    const associationsFilter = associations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      associations.map(
+        ({ childContentChannelItemId }) => childContentChannelItemId
+      )
+    ).orderBy('Order');
   };
 
   getCursorByChildContentItemId = async (id) => {
@@ -346,15 +343,14 @@ export default class ContentItem extends RockApolloDataSource {
     siblingAssociationsRequest.filterOneOf(parentFilter);
 
     const siblingAssociations = await siblingAssociationsRequest.get();
-    if (!siblingAssociations || !siblingAssociations.length) return null;
+    if (!siblingAssociations || !siblingAssociations.length)
+      return this.request().empty();
 
-    const request = this.request();
-    const siblingFilter = siblingAssociations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(siblingFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      siblingAssociations.map(
+        ({ childContentChannelItemId }) => childContentChannelItemId
+      )
+    ).orderBy('Order');
   };
 
   // Generates feed based on persons dataview membership
@@ -390,15 +386,16 @@ export default class ContentItem extends RockApolloDataSource {
       .orderBy('StartDateTime', 'desc');
   };
 
-  byUserFeed = () =>
+  byUserFeed = () => this.byActive().orderBy('StartDateTime', 'desc');
+
+  byActive = () =>
     this.request()
       .filterOneOf(
         ROCK_MAPPINGS.FEED_CONTENT_CHANNEL_IDS.map(
           (id) => `ContentChannelId eq ${id}`
         )
       )
-      .andFilter(this.LIVE_CONTENT())
-      .orderBy('StartDateTime', 'desc');
+      .andFilter(this.LIVE_CONTENT());
 
   byContentChannelId = (id) =>
     this.request()
@@ -414,6 +411,13 @@ export default class ContentItem extends RockApolloDataSource {
 
   getFromIds = (ids = []) => {
     if (ids.length === 0) return this.request().empty();
+    if (get(ApollosConfig, 'ROCK.USE_PLUGIN', false)) {
+      // Avoids issue when fetching more than ~10 items
+      // Caused by an Odata node limit.
+      return this.request(
+        `Apollos/GetContentChannelItemsByIds?ids=${ids.join(',')}`
+      ).andFilter(this.LIVE_CONTENT());
+    }
     return this.request()
       .filterOneOf(ids.map((id) => `Id eq ${id}`))
       .andFilter(this.LIVE_CONTENT());

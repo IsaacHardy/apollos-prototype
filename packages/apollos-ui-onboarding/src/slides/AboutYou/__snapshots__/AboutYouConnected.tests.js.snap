@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AboutYouConnected component renders Gender and BirthDate when logged in 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -126,6 +130,8 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
           >
             <View
               accessible={true}
+              clickable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -185,6 +191,8 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
             </View>
             <View
               accessible={true}
+              clickable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -253,7 +261,9 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -327,6 +337,8 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
             >
               <View
                 accessible={true}
+                clickable={true}
+                onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
@@ -427,7 +439,9 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
                   </View>
                   <View
                     accessible={true}
+                    clickable={true}
                     isTVSelectable={true}
+                    onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
@@ -464,7 +478,9 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
                 </View>
                 <View
                   accessible={true}
+                  clickable={true}
                   isTVSelectable={true}
+                  onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -570,7 +586,9 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -739,17 +757,21 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`AboutYouConnected component renders in a default state 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -866,6 +888,8 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -913,6 +937,8 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
             </View>
             <View
               accessible={true}
+              clickable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -981,7 +1007,9 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -1055,6 +1083,8 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
             >
               <View
                 accessible={true}
+                clickable={true}
+                onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
@@ -1155,7 +1185,9 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
                   </View>
                   <View
                     accessible={true}
+                    clickable={true}
                     isTVSelectable={true}
+                    onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
@@ -1192,7 +1224,9 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
                 </View>
                 <View
                   accessible={true}
+                  clickable={true}
                   isTVSelectable={true}
+                  onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -1313,17 +1347,21 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`AboutYouConnected component should render a custom Component 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1353,5 +1391,5 @@ exports[`AboutYouConnected component should render a custom Component 1`] = `
       Male
     </Text>
   </View>
-</RCTSafeAreaView>
+</View>
 `;

@@ -27,6 +27,11 @@ CHURCH_ONLINE:
   URL: https://apollos.churchonline.org/api/v1/
   MEDIA_URLS: []
   WEB_VIEW_URL: https://apollos.churchonline.org/
+ALGOLIA:
+  APPLICATION_ID: ${ALGOLIA_APP_ID}
+  API_KEY: ${ALGOLIA_API_KEY}
+  # TODO: should we support multiple indices? how?
+  SEARCH_INDEX: test_ContentItems
 TWILIO:
   ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
   AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
@@ -95,6 +100,7 @@ ROCK_MAPPINGS:
     - 8
   # Apollos will pull content items from these channels and expose them on the user feed
   # However, it will not expose the channel itself.
+  # These channels are also pulled when indexing searchable content.
   FEED_CONTENT_CHANNEL_IDS:
     - 1
     - 2
@@ -111,19 +117,22 @@ ROCK_MAPPINGS:
   SERMON_SERIES_CHANNEL_ID: 4
   DEVOTIONAL_SERIES_CHANNEL_ID: 6
 
+  SERVING_GROUP_TYPE_ID: 23
+  COMMUNITY_GROUP_TYPE_ID: 25
+  FAMILY_GROUP_TYPE_ID: 10
+
 HOME_FEATURES:
-  -
-    title: FOR YOU
+  - title: FOR YOU
     algorithms: [SERMON_CHILDREN, PERSONA_FEED]
     subtitle: Explore what God calls you to today
-  -
-    title: BULLETIN
+  - title: BULLETIN
     subtitle: What's happening at apollos?
     algorithms:
-      -
-        type: CONTENT_CHANNEL
+      - type: CONTENT_CHANNEL
         arguments:
           contentChannelId: 13
+      - type: UPCOMING_EVENTS
+
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:

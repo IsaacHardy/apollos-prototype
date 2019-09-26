@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The onboarding swiper should render with a fragment as a child 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -48,7 +52,7 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
     >
       <RCTScrollView
         activeDot={
-          <SafeAreaView
+          <ForwardRef(_SafeAreaView)
             forceInset={
               Object {
                 "bottom": "always",
@@ -56,7 +60,7 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
             }
           >
             <mapProps(getContext(mapProps(withPropsOnChange(mapProps(View))))) />
-          </SafeAreaView>
+          </ForwardRef(_SafeAreaView)>
         }
         automaticallyAdjustContentInsets={false}
         autoplay={false}
@@ -78,7 +82,7 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
         }
         disableNextButton={false}
         dot={
-          <SafeAreaView
+          <ForwardRef(_SafeAreaView)
             forceInset={
               Object {
                 "bottom": "always",
@@ -92,7 +96,7 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
                 }
               }
             />
-          </SafeAreaView>
+          </ForwardRef(_SafeAreaView)>
         }
         horizontal={true}
         index={0}
@@ -127,7 +131,9 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -160,7 +166,9 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -290,17 +298,21 @@ exports[`The onboarding swiper should render with a fragment as a child 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The onboarding swiper should render with an array as a child 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -341,7 +353,7 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
     >
       <RCTScrollView
         activeDot={
-          <SafeAreaView
+          <ForwardRef(_SafeAreaView)
             forceInset={
               Object {
                 "bottom": "always",
@@ -349,7 +361,7 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
             }
           >
             <mapProps(getContext(mapProps(withPropsOnChange(mapProps(View))))) />
-          </SafeAreaView>
+          </ForwardRef(_SafeAreaView)>
         }
         automaticallyAdjustContentInsets={false}
         autoplay={false}
@@ -371,7 +383,7 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
         }
         disableNextButton={false}
         dot={
-          <SafeAreaView
+          <ForwardRef(_SafeAreaView)
             forceInset={
               Object {
                 "bottom": "always",
@@ -385,7 +397,7 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
                 }
               }
             />
-          </SafeAreaView>
+          </ForwardRef(_SafeAreaView)>
         }
         horizontal={true}
         index={0}
@@ -420,7 +432,9 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -453,7 +467,9 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
           >
             <View
               accessible={true}
+              clickable={true}
               isTVSelectable={true}
+              onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -583,5 +599,5 @@ exports[`The onboarding swiper should render with an array as a child 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;

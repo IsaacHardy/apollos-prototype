@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HorizontalHighlightCard should render 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -148,8 +152,8 @@ exports[`HorizontalHighlightCard should render 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -193,8 +197,8 @@ exports[`HorizontalHighlightCard should render 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -317,17 +321,21 @@ exports[`HorizontalHighlightCard should render 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render a loading state with isLoading 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -470,8 +478,8 @@ exports[`HorizontalHighlightCard should render a loading state with isLoading 1`
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -538,8 +546,8 @@ exports[`HorizontalHighlightCard should render a loading state with isLoading 1`
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -557,17 +565,21 @@ exports[`HorizontalHighlightCard should render a loading state with isLoading 1`
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render with a custom actionIcon 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -708,8 +720,8 @@ exports[`HorizontalHighlightCard should render with a custom actionIcon 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -868,8 +880,8 @@ exports[`HorizontalHighlightCard should render with a custom actionIcon 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -992,17 +1004,21 @@ exports[`HorizontalHighlightCard should render with a custom actionIcon 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render with a custom theme 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1150,8 +1166,8 @@ exports[`HorizontalHighlightCard should render with a custom theme 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -1195,8 +1211,8 @@ exports[`HorizontalHighlightCard should render with a custom theme 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -1319,17 +1335,21 @@ exports[`HorizontalHighlightCard should render with a custom theme 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render with an action "button" 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1470,8 +1490,8 @@ exports[`HorizontalHighlightCard should render with an action "button" 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -1578,7 +1598,53 @@ exports[`HorizontalHighlightCard should render with an action "button" 1`] = `
                 y={0}
               >
                 <RNSVGPath
-                  d="M24 0a24 24 0 1 1 0 48 24 24 0 0 1 0-48zm9.2 25.5c.5-.4.8-.9.8-1.4 0-.7-.3-1.2-.8-1.5l-12-8.3c-.5-.2-1.1-.2-1.7 0-.5.3-.8.9-.8 1.5v16.4a1.7 1.7 0 0 0 1.7 1.7c.3 0 .6 0 1-.2l11.8-8.2z"
+                  d="M24 0a24 24 0 1 0 0 48 24 24 0 0 0 0-48z"
+                  fill={
+                    Array [
+                      0,
+                      4294506484,
+                    ]
+                  }
+                  fillOpacity={0.1}
+                  fillRule={1}
+                  matrix={
+                    Array [
+                      1,
+                      0,
+                      0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  opacity={1}
+                  originX={0}
+                  originY={0}
+                  propList={
+                    Array [
+                      "fill",
+                      "fillOpacity",
+                    ]
+                  }
+                  rotation={0}
+                  scaleX={1}
+                  scaleY={1}
+                  skewX={0}
+                  skewY={0}
+                  stroke={null}
+                  strokeDasharray={null}
+                  strokeDashoffset={null}
+                  strokeLinecap={0}
+                  strokeLinejoin={0}
+                  strokeMiterlimit={4}
+                  strokeOpacity={1}
+                  strokeWidth={1}
+                  vectorEffect={0}
+                  x={0}
+                  y={0}
+                />
+                <RNSVGPath
+                  d="M20 15.3c0-1.3.9-1.7 2-1l11 8c1.1.8 1.1 2 0 2.8l-11 8.4c-1.1.9-2 .5-2-.8V15.3z"
                   fill={
                     Array [
                       0,
@@ -1630,8 +1696,8 @@ exports[`HorizontalHighlightCard should render with an action "button" 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -1754,17 +1820,21 @@ exports[`HorizontalHighlightCard should render with an action "button" 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render with custom LabelComponent 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1905,8 +1975,8 @@ exports[`HorizontalHighlightCard should render with custom LabelComponent 1`] = 
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -2004,8 +2074,8 @@ exports[`HorizontalHighlightCard should render with custom LabelComponent 1`] = 
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -2128,17 +2198,21 @@ exports[`HorizontalHighlightCard should render with custom LabelComponent 1`] = 
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should render with custom labelText 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -2279,8 +2353,8 @@ exports[`HorizontalHighlightCard should render with custom labelText 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -2378,8 +2452,8 @@ exports[`HorizontalHighlightCard should render with custom labelText 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -2502,17 +2576,21 @@ exports[`HorizontalHighlightCard should render with custom labelText 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`HorizontalHighlightCard should should render as isLiked 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -2653,8 +2731,8 @@ exports[`HorizontalHighlightCard should should render as isLiked 1`] = `
             Object {
               "alignItems": "flex-start",
               "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
+              "paddingBottom": 24,
+              "paddingHorizontal": 16,
               "paddingVertical": 16,
               "position": "absolute",
               "width": "100%",
@@ -2698,8 +2776,8 @@ exports[`HorizontalHighlightCard should should render as isLiked 1`] = `
           style={
             Object {
               "position": "absolute",
-              "right": 24,
-              "top": 24,
+              "right": 16,
+              "top": 16,
             }
           }
         >
@@ -2823,5 +2901,5 @@ exports[`HorizontalHighlightCard should should render as isLiked 1`] = `
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;

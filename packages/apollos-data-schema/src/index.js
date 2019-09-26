@@ -399,6 +399,25 @@ export const contentChannelSchema = gql`
   }
 `;
 
+export const searchSchema = gql`
+  extend type Query {
+    search(query: String!, first: Int, after: String): SearchResultsConnection
+  }
+
+  type SearchResultsConnection {
+    edges: [SearchResult]
+    pageInfo: PaginationInfo
+  }
+
+  type SearchResult {
+    cursor: String
+    title: String
+    summary: String
+    coverImage: ImageMedia
+    node: Node
+  }
+`;
+
 export const sharableSchema = gql`
   interface Sharable {
     message: String
@@ -456,6 +475,25 @@ export const pushSchema = gql`
 
   extend type Mutation {
     updateUserPushSettings(input: PushSettingsInput!): Person
+  }
+`;
+
+export const groupSchema = gql`
+  enum GROUP_TYPE {
+    Serving
+    Community
+    Family
+  }
+
+  type Group implements Node {
+    id: ID!
+    name: String
+    leader: Person
+    members: [Person]
+  }
+
+  extend type Person {
+    groups(type: GROUP_TYPE, asLeader: Boolean): [Group]
   }
 `;
 
@@ -566,6 +604,7 @@ export const featuresSchema = gql`
 
   enum ACTION_FEATURE_ACTION {
     READ_CONTENT
+    READ_EVENT
   }
 
   type ActionListAction {

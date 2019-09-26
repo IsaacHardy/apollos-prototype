@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Onboarding Slide component should render a loading indicator 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -80,7 +84,9 @@ exports[`The Onboarding Slide component should render a loading indicator 1`] = 
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -125,17 +131,21 @@ exports[`The Onboarding Slide component should render a loading indicator 1`] = 
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render both slide navigation buttons 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -208,7 +218,9 @@ exports[`The Onboarding Slide component should render both slide navigation butt
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -390,17 +402,21 @@ exports[`The Onboarding Slide component should render both slide navigation butt
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render children 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -446,17 +462,21 @@ exports[`The Onboarding Slide component should render children 1`] = `
       </View>
     </RCTScrollView>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render onboarding next button navigation 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -529,7 +549,9 @@ exports[`The Onboarding Slide component should render onboarding next button nav
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -698,17 +720,21 @@ exports[`The Onboarding Slide component should render onboarding next button nav
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render onboarding skip button navigation 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -795,17 +821,21 @@ exports[`The Onboarding Slide component should render onboarding skip button nav
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render onboarding skip button with custom text 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -892,17 +922,21 @@ exports[`The Onboarding Slide component should render onboarding skip button wit
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render primary navigation button with a custom icon 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -975,7 +1009,9 @@ exports[`The Onboarding Slide component should render primary navigation button 
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -1144,17 +1180,21 @@ exports[`The Onboarding Slide component should render primary navigation button 
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render primary navigation button with custom text 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1227,7 +1267,9 @@ exports[`The Onboarding Slide component should render primary navigation button 
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -1396,17 +1438,21 @@ exports[`The Onboarding Slide component should render primary navigation button 
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Onboarding Slide component should render primary navigation button without a custom icon 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
+<View
   onLayout={[Function]}
+  pointerEvents="box-none"
   style={
     Object {
       "bottom": 0,
       "left": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 20,
       "position": "absolute",
       "right": 0,
       "top": 0,
@@ -1479,7 +1525,9 @@ exports[`The Onboarding Slide component should render primary navigation button 
       >
         <View
           accessible={true}
+          clickable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -1530,5 +1578,5 @@ exports[`The Onboarding Slide component should render primary navigation button 
       </RCTSafeAreaView>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
