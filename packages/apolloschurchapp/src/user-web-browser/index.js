@@ -34,7 +34,7 @@ export const WITH_USER_COOKIE = gql`
   }
 `;
 
-const BrowserWithUserCookie = ({ url, navigation, modal = true }) => {
+const BrowserWithUserCookie = ({ url, navigation, modal = false }) => {
   // get the url from the navigation param or default to the url prop;
   const uri = navigation.getParam('url', url);
   return (
