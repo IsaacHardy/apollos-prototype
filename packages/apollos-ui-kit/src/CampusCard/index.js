@@ -38,7 +38,7 @@ const CampusCard = memo(
         <FlexedCardContent>
           <Header>
             <H5>{title}</H5>
-            {distance ? (
+            {distance != null ? (
               <H6>
                 {Math.round(distance)}
                 mi
