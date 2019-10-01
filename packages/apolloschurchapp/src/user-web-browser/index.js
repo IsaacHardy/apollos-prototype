@@ -11,7 +11,7 @@ import { get } from 'lodash';
 const Browser = ({ url, cookie, modal, navigation }) => {
   if (modal) {
     return (
-      <ModalView navigation={navigation}>
+      <ModalView navigation={navigation} onClose={() => navigation.pop()}>
         <WebView source={{ uri: url, headers: { Cookie: cookie } }} />
       </ModalView>
     );
@@ -34,9 +34,10 @@ export const WITH_USER_COOKIE = gql`
   }
 `;
 
-const BrowserWithUserCookie = ({ url, navigation, modal = false }) => {
+const BrowserWithUserCookie = ({ url, navigation }) => {
   // get the url from the navigation param or default to the url prop;
   const uri = navigation.getParam('url', url);
+  const modal = navigation.getParam('modal', false); // TODO make this dynamic, based on navigationOptions.header
   return (
     <Query query={WITH_USER_COOKIE}>
       {({ data, loading }) => {
@@ -57,9 +58,15 @@ const BrowserWithUserCookie = ({ url, navigation, modal = false }) => {
   );
 };
 
+BrowserWithUserCookie.navigationOptions = ({
+  navigation,
+  navigationOptions,
+}) => ({
+  header: navigation.getParam('modal', false) ? null : navigationOptions.header,
+});
+
 BrowserWithUserCookie.propTypes = {
   url: PropTypes.string,
-  modal: PropTypes.bool,
 };
 
 export default BrowserWithUserCookie;

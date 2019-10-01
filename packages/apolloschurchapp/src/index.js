@@ -52,12 +52,20 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'ProtectedRoute',
+    defaultNavigationOptions: ({ screenProps }) => ({
+      headerTintColor: screenProps.headerTintColor,
+    }),
     mode: 'modal',
     headerMode: 'screen',
   }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const EnhancedAppNavigator = withTheme(({ theme, ...props }) => ({
+  ...props,
+  screenProps: { headerTintColor: theme.colors.text.secondary },
+}))(AppNavigator);
+
+const AppContainer = createAppContainer(EnhancedAppNavigator);
 
 const App = () => (
   <Providers>
