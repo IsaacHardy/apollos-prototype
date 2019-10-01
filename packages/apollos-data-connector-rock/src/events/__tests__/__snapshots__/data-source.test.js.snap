@@ -14,7 +14,11 @@ Array [
   Array [
     "EventItemOccurrences?loadAttributes=expanded&%24expand=Schedule&%24orderby=Schedule%2FEffectiveStartDate%20asc&%24filter=Schedule%2FEffectiveStartDate%20ne%20null",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;
@@ -33,7 +37,11 @@ Array [
   Array [
     "Apollos/GetEventItemOccurencesByCalendarId?id=1&loadAttributes=expanded&%24expand=Schedule&%24orderby=Schedule%2FEffectiveStartDate%20asc&%24filter=Schedule%2FEffectiveStartDate%20ne%20null",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;
@@ -52,22 +60,21 @@ Array [
   Array [
     "EventItemOccurrences?loadAttributes=expanded&%24expand=Schedule&%24orderby=Schedule%2FEffectiveStartDate%20asc&%24filter=%28Schedule%2FEffectiveStartDate%20ne%20null%29%20or%20%28CampusId%20eq%20456%29",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;
 
-exports[`Events should get by id 1`] = `
-Object {
-  "id": 123,
-  "name": "some event",
-}
-`;
+exports[`Events should get from id 1`] = `null`;
 
-exports[`Events should get by id 2`] = `
+exports[`Events should get from id 2`] = `
 Array [
   Array [
-    "EventItemOccurrences/123?loadAttributes=expanded",
+    "EventItemOccurrences?loadAttributes=expanded&%24filter=Id%20eq%20123&%24expand=Schedule&%24top=1",
     Object {},
     Object {},
   ],
@@ -79,7 +86,11 @@ Array [
   Array [
     "EventItems/123?loadAttributes=expanded",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;
@@ -89,7 +100,11 @@ Array [
   Array [
     "EventItems/123?loadAttributes=expanded",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;
@@ -109,7 +124,11 @@ Array [
   Array [
     "EventItems/123?loadAttributes=expanded",
     Object {},
-    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 60,
+      },
+    },
   ],
 ]
 `;

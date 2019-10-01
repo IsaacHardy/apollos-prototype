@@ -8,13 +8,15 @@ export default class Event extends RockApolloDataSource {
 
   expanded = true;
 
-  getById = (id) =>
+  getFromId = (id) =>
     this.request()
-      .find(id)
-      .get();
+      .filter(`Id eq ${id}`)
+      .expand('Schedule')
+      .first();
 
   getByCampus = (id) =>
     this.findRecent()
+      .cache({ ttl: 60 })
       .filter(`CampusId eq ${id}`)
       .get();
 
@@ -30,6 +32,7 @@ export default class Event extends RockApolloDataSource {
       );
     }
     return request
+      .cache({ ttl: 60 })
       .expand('Schedule')
       .orderBy('Schedule/EffectiveStartDate')
       .filter('Schedule/EffectiveStartDate ne null');
@@ -37,6 +40,7 @@ export default class Event extends RockApolloDataSource {
 
   getName = async ({ eventItemId }) => {
     const event = await this.request('EventItems')
+      .cache({ ttl: 60 })
       .find(eventItemId)
       .get();
     return event.name;
@@ -44,6 +48,7 @@ export default class Event extends RockApolloDataSource {
 
   getImage = async ({ eventItemId }) => {
     const event = await this.request('EventItems')
+      .cache({ ttl: 60 })
       .find(eventItemId)
       .get();
     const imageUrl = await this.context.dataSources.BinaryFiles.findOrReturnImageUrl(
