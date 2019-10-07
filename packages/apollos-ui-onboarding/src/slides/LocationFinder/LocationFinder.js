@@ -33,12 +33,13 @@ const LocationFinder = memo(
     buttonDisabled,
     onPressButton,
     campus,
+    onPressPrimary,
     ...props
   }) => (
-    <Slide {...props}>
+    <Slide onPressPrimary={onPressPrimary} {...props}>
       {BackgroundComponent}
       <StyledSlideContent title={slideTitle} description={description}>
-        {campus ? (
+        {onPressPrimary ? (
           <Touchable onPress={onPressButton}>
             <StyledCampusCard
               key={campus.id}
@@ -75,6 +76,7 @@ LocationFinder.propTypes = {
   buttonText: PropTypes.string,
   buttonDisabled: PropTypes.bool,
   onPressButton: PropTypes.func,
+  onPressPrimary: PropTypes.func,
   campus: PropTypes.shape({
     image: PropTypes.shape({
       uri: PropTypes.string,
