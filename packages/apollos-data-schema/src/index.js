@@ -62,7 +62,7 @@ export const peopleSchema = gql`
   type Person implements Node @cacheControl(maxAge: 0) {
     id: ID!
     firstName: String
-    lastName: String!
+    lastName: String
     nickName: String
     email: String
     gender: GENDER
@@ -450,7 +450,7 @@ export const sharableSchema = gql`
 
 export const liveSchema = gql`
   type LiveStream {
-    isLive: Boolean
+    isLive: Boolean @cacheControl(maxAge: 10)
     eventStartTime: String
     media: VideoMedia
     webViewUrl: String
