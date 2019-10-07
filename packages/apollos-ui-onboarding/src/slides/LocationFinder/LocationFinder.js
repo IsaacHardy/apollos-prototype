@@ -87,7 +87,6 @@ LocationFinder.defaultProps = {
   description:
     "We'll use your location to connect you with your nearby campus and community",
   buttonText: 'Yes, find my local campus',
-  buttonDisabled: false,
 };
 
 export default LocationFinder;
