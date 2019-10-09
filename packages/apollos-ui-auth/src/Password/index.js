@@ -1,13 +1,19 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {
   BackgroundView,
   TabView,
   PaddedView,
   TabSceneMap as SceneMap,
+  Icon,
 } from '@apollosproject/ui-kit';
+import { colors, sizing } from '@apollosproject/ui-kit/src/theme/defaultTheme';
 import { SafeAreaView } from 'react-navigation';
 
 import { PromptText } from '../styles';
@@ -15,6 +21,23 @@ import { AuthConsumer } from '../Provider';
 import LoginForm from './Login';
 
 import SignUpForm from './Signup';
+
+const styles = StyleSheet.create({
+  backButton: {
+    marginRight: sizing.baseUnit,
+  },
+  backButtonContainer: {
+    width: sizing.baseUnit * 2,
+    height: sizing.baseUnit * 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  paddedView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});
 
 class AuthPassword extends PureComponent {
   static navigationOptions = {
@@ -55,7 +78,19 @@ class AuthPassword extends PureComponent {
           >
             <BackgroundComponent>
               <SafeAreaView style={StyleSheet.absoluteFill}>
-                <PaddedView>
+                <PaddedView style={styles.paddedView}>
+                  <TouchableOpacity
+                    activeOpacity={1}
+                    style={styles.backButtonContainer}
+                    onPress={() => this.props.navigation.goBack()}
+                  >
+                    <Icon
+                      style={styles.backButton}
+                      fill={colors.primary}
+                      size={sizing.baseUnit * 1.5}
+                      name="arrow-back"
+                    />
+                  </TouchableOpacity>
                   <PromptText>{this.flatProps.passwordPromptText}</PromptText>
                 </PaddedView>
 

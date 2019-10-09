@@ -33,6 +33,10 @@ class VerificationConnected extends Component {
 
   flatProps = { ...this.props, ...this.props.screenProps };
 
+  handlePressBack = () => {
+    this.props.navigation.goBack();
+  };
+
   handleOnSubmit = ({ verifyPin, closeAuth }) => async (
     { code },
     { setSubmitting, setFieldError }
@@ -89,6 +93,7 @@ class VerificationConnected extends Component {
                         disabled={isSubmitting || !isValid}
                         isLoading={isSubmitting}
                         onPressNext={handleSubmit}
+                        onPressBack={this.handlePressBack}
                         setFieldValue={setFieldValue}
                         touched={touched}
                         values={values}

@@ -6,9 +6,16 @@ import {
   ScrollView,
   Platform,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import { get } from 'lodash';
-import { PaddedView, TextInput, BackgroundView } from '@apollosproject/ui-kit';
+import {
+  PaddedView,
+  TextInput,
+  BackgroundView,
+  Icon,
+} from '@apollosproject/ui-kit';
+import { colors, sizing } from '@apollosproject/ui-kit/src/theme/defaultTheme';
 
 import {
   FlexedSafeAreaView,
@@ -18,6 +25,19 @@ import {
   BrandIcon,
 } from '../styles';
 
+const styles = StyleSheet.create({
+  backButton: {
+    marginRight: sizing.baseUnit,
+  },
+  backButtonContainer: {
+    width: sizing.baseUnit * 2,
+    height: sizing.baseUnit * 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});
+
 const Verification = ({
   confirmationTitleText,
   confirmationPromptText,
@@ -25,6 +45,7 @@ const Verification = ({
   errors,
   isLoading,
   onPressNext,
+  onPressBack,
   setFieldValue,
   values,
   BackgroundComponent,
@@ -40,6 +61,18 @@ const Verification = ({
       <FlexedSafeAreaView>
         <ScrollView>
           <PaddedView>
+            <TouchableOpacity
+              activeOpacity={1}
+              style={styles.backButtonContainer}
+              onPress={() => onPressBack()}
+            >
+              <Icon
+                style={styles.backButton}
+                fill={colors.primary}
+                size={sizing.baseUnit * 1.5}
+                name="arrow-back"
+              />
+            </TouchableOpacity>
             <BrandIcon />
             <TitleText>{confirmationTitleText}</TitleText>
             <PromptText padded>{confirmationPromptText}</PromptText>
