@@ -1,19 +1,16 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 import {
   BackgroundView,
   TabView,
   PaddedView,
   TabSceneMap as SceneMap,
-  Icon,
+  ButtonIcon,
+  styled,
+  withTheme,
 } from '@apollosproject/ui-kit';
-import { colors, sizing } from '@apollosproject/ui-kit/src/theme/defaultTheme';
 import { SafeAreaView } from 'react-navigation';
 
 import { PromptText } from '../styles';
@@ -22,22 +19,21 @@ import LoginForm from './Login';
 
 import SignUpForm from './Signup';
 
-const styles = StyleSheet.create({
-  backButton: {
-    marginRight: sizing.baseUnit,
-  },
-  backButtonContainer: {
-    width: sizing.baseUnit * 2,
-    height: sizing.baseUnit * 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  paddedView: {
+const StyledPaddedView = styled(
+  {
     flexDirection: 'row',
     alignItems: 'center',
   },
-});
+  'ui-auth.Password.PaddedView'
+)(PaddedView);
+
+const BackButton = withTheme(({ theme }) => ({
+  fill: theme.colors.primary,
+  size: theme.sizing.baseUnit * 1.5,
+  style: {
+    paddingLeft: 0,
+  },
+}))(ButtonIcon);
 
 class AuthPassword extends PureComponent {
   static navigationOptions = {
@@ -78,21 +74,13 @@ class AuthPassword extends PureComponent {
           >
             <BackgroundComponent>
               <SafeAreaView style={StyleSheet.absoluteFill}>
-                <PaddedView style={styles.paddedView}>
-                  <TouchableOpacity
-                    activeOpacity={1}
-                    style={styles.backButtonContainer}
+                <StyledPaddedView>
+                  <BackButton
+                    name="arrow-back"
                     onPress={() => this.props.navigation.goBack()}
-                  >
-                    <Icon
-                      style={styles.backButton}
-                      fill={colors.primary}
-                      size={sizing.baseUnit * 1.5}
-                      name="arrow-back"
-                    />
-                  </TouchableOpacity>
+                  />
                   <PromptText>{this.flatProps.passwordPromptText}</PromptText>
-                </PaddedView>
+                </StyledPaddedView>
 
                 <TabView
                   routes={this.tabRoutes}
