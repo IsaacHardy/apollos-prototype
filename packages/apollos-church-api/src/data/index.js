@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server';
 
 import { createApolloServerConfig } from '@apollosproject/server-core';
+import ApollosConfig from '@apollosproject/config';
 
 import * as Analytics from '@apollosproject/data-connector-analytics';
 import * as Scripture from '@apollosproject/data-connector-bible';
@@ -55,7 +56,10 @@ const data = {
   PersonalDevice,
   OneSignalWithRock,
   Pass,
-  Search,
+  Search:
+    ApollosConfig.ALGOLIA.API_KEY && ApollosConfig.ALGOLIA.APPLICATION_ID
+      ? Search
+      : {},
   Template,
   Campus,
   Group,
