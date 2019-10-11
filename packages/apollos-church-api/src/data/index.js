@@ -1,7 +1,6 @@
 import { gql } from 'apollo-server';
 
 import { createApolloServerConfig } from '@apollosproject/server-core';
-import ApollosConfig from '@apollosproject/config';
 
 import * as Analytics from '@apollosproject/data-connector-analytics';
 import * as Scripture from '@apollosproject/data-connector-bible';
