@@ -56,10 +56,7 @@ const data = {
   PersonalDevice,
   OneSignalWithRock,
   Pass,
-  Search:
-    ApollosConfig.ALGOLIA.API_KEY && ApollosConfig.ALGOLIA.APPLICATION_ID
-      ? Search
-      : {},
+  Search,
   Template,
   Campus,
   Group,
