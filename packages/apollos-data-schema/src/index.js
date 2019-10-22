@@ -17,10 +17,16 @@ export const authSmsSchema = gql`
 `;
 
 export const authSchema = gql`
+  type RockPersonDetails {
+    authToken: String
+    authCookie: String
+  }
+
   type AuthenticatedUser @cacheControl(maxAge: 0) {
     id: ID!
     profile: Person
-    rockToken: String
+    rock: RockPersonDetails
+    rockToken: String @deprecated(reason: "Use rock.authCookie instead")
   }
 
   type Authentication {
@@ -62,7 +68,7 @@ export const peopleSchema = gql`
   type Person implements Node @cacheControl(maxAge: 0) {
     id: ID!
     firstName: String
-    lastName: String!
+    lastName: String
     nickName: String
     email: String
     gender: GENDER
@@ -397,6 +403,25 @@ export const contentChannelSchema = gql`
   }
 `;
 
+export const searchSchema = gql`
+  extend type Query {
+    search(query: String!, first: Int, after: String): SearchResultsConnection
+  }
+
+  type SearchResultsConnection {
+    edges: [SearchResult]
+    pageInfo: PaginationInfo
+  }
+
+  type SearchResult {
+    cursor: String
+    title: String
+    summary: String
+    coverImage: ImageMedia
+    node: Node
+  }
+`;
+
 export const sharableSchema = gql`
   interface Sharable {
     message: String
@@ -431,7 +456,7 @@ export const sharableSchema = gql`
 
 export const liveSchema = gql`
   type LiveStream {
-    isLive: Boolean
+    isLive: Boolean @cacheControl(maxAge: 10)
     eventStartTime: String
     media: VideoMedia
     webViewUrl: String
@@ -454,6 +479,26 @@ export const pushSchema = gql`
 
   extend type Mutation {
     updateUserPushSettings(input: PushSettingsInput!): Person
+  }
+`;
+
+export const groupSchema = gql`
+  enum GROUP_TYPE {
+    Serving
+    Community
+    Family
+  }
+
+  type Group implements Node {
+    id: ID!
+    name: String
+    leader: Person @deprecated(reason: "No longer used, use 'leaders' instead")
+    leaders: [Person]
+    members: [Person]
+  }
+
+  extend type Person {
+    groups(type: GROUP_TYPE, asLeader: Boolean): [Group]
   }
 `;
 
@@ -564,6 +609,7 @@ export const featuresSchema = gql`
 
   enum ACTION_FEATURE_ACTION {
     READ_CONTENT
+    READ_EVENT
   }
 
   type ActionListAction {
@@ -609,6 +655,22 @@ export const featuresSchema = gql`
 
   extend type Query {
     userFeedFeatures: [Feature] @cacheControl(maxAge: 0)
+  }
+`;
+
+export const eventSchema = gql`
+  type Event implements Node {
+    id: ID!
+    name: String
+    description: String
+    location: String
+    start: String
+    end: String
+    image: ImageMedia
+  }
+
+  extend type Campus {
+    events: [Event]
   }
 `;
 

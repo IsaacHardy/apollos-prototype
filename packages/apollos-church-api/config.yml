@@ -19,6 +19,8 @@ ROCK:
   SHARE_URL: https://apollosrock.newspring.cc
   # This should match the timezone of the Rock server
   TIMEZONE: 'America/New_York'
+  USE_PLUGIN: true
+  SHOW_INACTIVE_CONTENT: ${ROCK_SHOW_INACTIVE_CONTENT}
 ONE_SIGNAL:
   APP_ID: b6e75a77-003f-4466-95ca-82cc5cdc407b
   REST_KEY: ${ONE_SIGNAL_REST_KEY}
@@ -26,6 +28,11 @@ CHURCH_ONLINE:
   URL: https://apollos.churchonline.org/api/v1/
   MEDIA_URLS: []
   WEB_VIEW_URL: https://apollos.churchonline.org/
+ALGOLIA:
+  APPLICATION_ID: ${ALGOLIA_APP_ID}
+  API_KEY: ${ALGOLIA_API_KEY}
+  # TODO: should we support multiple indices? how?
+  SEARCH_INDEX: test_ContentItems
 TWILIO:
   ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
   AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
@@ -51,6 +58,9 @@ CLOUDINARY:
   # value should look something like
   # cloudinary://123123123:adkfnla_adASDv_adAS@test
   URL: ${CLOUDINARY_URL}
+ENGINE:
+  API_KEY: ${ENGINE_API_KEY}
+  SCHEMA_TAG: ${ENGINE_SCHEMA_TAG}
 
 # This key holds various properties that allow our GraphQL server to map to your Rock Instance
 ROCK_MAPPINGS:
@@ -94,6 +104,7 @@ ROCK_MAPPINGS:
     - 8
   # Apollos will pull content items from these channels and expose them on the user feed
   # However, it will not expose the channel itself.
+  # These channels are also pulled when indexing searchable content.
   FEED_CONTENT_CHANNEL_IDS:
     - 1
     - 2
@@ -108,19 +119,22 @@ ROCK_MAPPINGS:
 
   SERMON_CHANNEL_ID: 5
 
+  SERVING_GROUP_TYPE_ID: 23
+  COMMUNITY_GROUP_TYPE_ID: 25
+  FAMILY_GROUP_TYPE_ID: 10
+
 HOME_FEATURES:
-  -
-    title: FOR YOU
+  - title: FOR YOU
     algorithms: [SERMON_CHILDREN, PERSONA_FEED]
     subtitle: Explore what God calls you to today
-  -
-    title: BULLETIN
+  - title: BULLETIN
     subtitle: What's happening at apollos?
     algorithms:
-      -
-        type: CONTENT_CHANNEL
+      - type: CONTENT_CHANNEL
         arguments:
           contentChannelId: 13
+      - type: UPCOMING_EVENTS
+
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:

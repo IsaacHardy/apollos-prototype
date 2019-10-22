@@ -10,9 +10,11 @@ import * as AuthSms from './auth-sms';
 import * as PersonalDevice from './personal-devices';
 import * as Template from './template';
 import * as Campus from './campuses';
+import * as Group from './groups';
 import * as Utils from './utils';
 import * as BinaryFiles from './binary-files';
 import * as Features from './features';
+import * as Event from './events';
 
 export {
   Followings,
@@ -27,7 +29,9 @@ export {
   Template,
   AuthSms,
   Campus,
+  Group,
   Utils,
   BinaryFiles,
   Features,
+  Event,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform, View } from 'react-native';
-import { AirPlayButton as AirPlayBtn } from 'react-native-airplay-btn';
+import { View } from 'react-native';
+import { AirPlayButton as AirPlayBtn } from '@apollosproject/react-native-airplay-btn';
 
 import { styled } from '@apollosproject/ui-kit';
 
@@ -13,11 +13,9 @@ const Wrapper = styled(({ theme }) => ({
   alignItems: 'center',
 }))(View);
 
-const AirPlayButton = () =>
-  Platform.OS === 'ios' ? (
-    <Wrapper>
-      <AirPlayBtn />
-    </Wrapper>
-  ) : null;
-
+const AirPlayButton = () => (
+  <Wrapper>
+    <AirPlayBtn />
+  </Wrapper>
+);
 export default AirPlayButton;

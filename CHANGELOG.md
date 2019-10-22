@@ -1,3 +1,113 @@
+v1.2.0-beta.6: October 21, 2019
+
+- Prevents Extra Space in Tab Bar (#1094) (0e645894)
+- Ensures that invalid nodes don't break search results (#1141) (c0b49a08)
+- Fixes Tappable Areas in Devotional Content Items (#1137) (e9cad8bb)
+
+v1.2.0-beta.5: October 18, 2019
+
+- Adds LOAD_TESTING documentation (#1133) (7e247438)
+- Adds an active/disabled state to HorizontalHighlightCard (#1122) (65f8dca4)
+
+- Reduces Warnings (#1117) (0ca02fb8)
+- Removes Caching of Auth Tokens (#1129) (561081a8)
+
+- Updates some of theme alpha values to match new Apollos style guide (#1124) (8debd3cf)
+- Upgrades react native device info (#1136) (9e846854)
+- Highlights the active card in HorizontalContentFeeds (#1135) (40a93ad6)
+
+- Fixes Group members function (#1134) (dee54131)
+- Fixes media player titles on android not being centered. (#1130) (cc9a47c7)
+- Fix close button play state issue. (#1128) (e0f824c6)
+
+
+v1.2.0-beta.4: October 14, 2019
+
+- Adds event descriptions (#1121) (44e5f5b3)
+- Adds Back Navigation to Auth Screens (#1113) (2f266bf1)
+- Adds Rock Token to In App Browser (#1120) (fd2bc47a)
+- Adds translation prop to ScriptureItem component (#1111) (36d4307d)
+
+v1.2.0-beta.3: October 10, 2019
+
+- Adds Rock Token to API (#1103) (dfba44c0)
+- Adds Redis Cache and stores isLiked / likeCount in RedisCache. (#1093) (977b2fbf)
+- Adds Filtering for only Active Group Members (#1099) (1fdc94a2)
+- Adds Filter control for Unpublished Content (#1102) (d3b08409)
+
+- Removes Redis warnings and fixes cache keys for like counts (#1110) (aae10c9e)
+
+- Fixes profile image uploading (#1101) (43e6d492)
+- Fixes occasional expansion of the TabBar (hopefully final fix) (#1105) (f694e426)
+- Fixes location finder connected not updating after location permission is granted (android) (#1104) (f76b0be6)
+
+
+v1.2.0-beta.2: October 7, 2019
+
+- Adds ability for server to pick up REDIS_URL (#1092) (bfb972ad)
+- Adds Explicit Apollo Engine Config (#1089) (fd47bc13)
+- Adds Publishing of Schema to Engine (#1090) (0d2ae1f0)
+
+- Refactors Locations in Onboarding (#1098) (5f23ed9e)
+- Removes Campus Distance from Onboarding Screen (#1078) (6efa7f3d)
+
+- Fixes safe area layout provider, which fixes tab bar height issue (#1095) (566b20ec)
+- Fixes decoding Feature Text (#1097) (3cba43ea)
+- Fixes maxage of livestream cache (#1087) (29d12cd1)
+
+v1.2.0-beta.1: October 2, 2019
+
+- Adds Apollos Plugin support to `getCursorByChildContentItemId` (#1072) (43c1b5fb)
+- Adds TTLs throughout the app to speed up repeat Rock requests (#1077) (71a08e9f)
+- Adds Multiple Group Leader Support (#1073) (8b1e29c2)
+- Adds ability to view events in app (#1068) (eda59ff6)
+
+- Removes last name as a required attribute (#1081) (0586bc0f)
+
+- Fixes Summary Field (#1084) (5c302a17)
+- Fixes apple email warnings (#1080) (954cff66)
+
+
+v1.2.0-beta.0: September 25, 2019
+
+- Adds Groups Functionality to API (#939) (b0913abd)
+- Adds Search indexing and Job Queue (#1062) (7218ad9f)
+- Adds spacing to miniplayer controls (#1036) (7b11760a)
+- Adds search to Discover tab (#1044) (58b7f823)
+- Adds action list feed feature for upcoming events (#1059) (80f11156)
+- Uses apollos plugin to fix max node issues (#1049) (da61db16)
+- Adds Algolia Search (#1037) (eccd30b5)
+- Adds Search input component (#1017) (c8e1590f)
+- Adds Apollos Plugin Integration (#1021) (00e0fe05)
+- Allows Username Login (#997) (68718e8e)
+- Adds Events to API (#1015) (a4323d7a)
+- Adds numColumns={1} prop to fix ipad. fixes #846 (#1000) (d8308b6b)
+
+- Updates Development to iPhone 11 Sim (#1066) (7348511b)
+- Installs Pods Automatically (#1051) (1a97ca2a)
+- Improves In App Browser and Chrome Custom Tabs (#972) (0761d53a)
+- Adjusts Scripture Padding and Legal Text Logic (#1058) (1a4f40a6)
+- Improves testing coverage and performance. (#1057) (67064f79)
+- Updates Tab Header Colors (#1043) (8baf7686)
+- Bumps lodash-es from 4.17.11 to 4.17.15 (#1050) (4d7b1b8c)
+- Removes unneeded FeedView padding (#1042) (10540ced)
+- Moves Xcode schemas into workspace (#1048) (27a739ab)
+- Updates Cocoapods to 1.7.5 (#1047) (ac855c14)
+- Upgrades to React Native 60 (#1020) (410abe40)
+- Configures tests to only run story generation when actually publishing (#1039) (58106855)
+- Improves Header Contrast (#1035) (be58bab9)
+- Bumps mixin-deep from 1.3.1 to 1.3.2 (#1027) (748c0acd)
+
+- Fixes MiniPlayer Safe View (#1034) (c959524e)
+- Fixes Lint Error (#1056) (c3258ea0)
+- Fixes 20+ Content Children Issue (#1054) (7a5ca1fa)
+- Fixes phone entry keyboard covering link (#1055) (64709289)
+- Fixes onesignal pod not installing (#1046) (3834a1da)
+- Fixes Highlight Play Icon (#1038) (b3c9cff3)
+- Fixes calling removed function (#1040) (ad0faf0b)
+- Fixes like icon positioning for horizontal cards (#998) (7f5d141e)
+- Fixes User Location View (#1001) (da064f4c)
+- Fixes bug where sermon algorithm would return an error if current sermon had no children (#1016) (50e5e7fa)
 
 v1.1.0: August 14, 2019
 

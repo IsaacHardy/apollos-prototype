@@ -1,52 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Text Input component should render as a numeric field 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "opacity": 0,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          editable={true}
+          keyboardType="numeric"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder="Some placeholder"
+          placeholderTextColor="rgba(48, 48, 48, 0.6)"
+          rejectResponderTermination={true}
+          returnKeyType="done"
           style={
             Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
+              "color": "#303030",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 14,
+              "height": 38,
+              "paddingVertical": 0,
             }
           }
         >
@@ -148,113 +152,95 @@ exports[`The Text Input component should render as a numeric field 1`] = `
         <View
           style={
             Object {
+              "backgroundColor": "#00676D",
               "bottom": 0,
-              "left": 0,
-              "right": 0,
+              "height": 0.5,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "#A5A5A5",
-                "bottom": -0.5,
-                "height": 0.5,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "transform": Array [
-                  Object {
-                    "scaleX": 0.0001,
-                  },
-                ],
-              }
-            }
-          >
-            <View
-              hasError={false}
-              style={
-                Object {
-                  "backgroundColor": "#00676D",
-                  "bottom": 0,
-                  "height": 0.5,
-                }
-              }
-            />
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Text Input component should render as a password field with an icon 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "opacity": 0,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          autoCorrect={false}
+          editable={true}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder="Some placeholder"
+          placeholderTextColor="rgba(48, 48, 48, 0.6)"
+          rejectResponderTermination={true}
+          returnKeyType="done"
+          secureTextEntry={true}
           style={
             Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
+              "color": "#303030",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 14,
+              "height": 38,
+              "paddingVertical": 0,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "justifyContent": "center",
-              }
-            }
-          />
-          <View
-            style={
+          type="password"
+          underlineColorAndroid="transparent"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={18}
+          bbWidth={18}
+          height={18}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
               Object {
                 "alignSelf": "flex-end",
                 "flex": 1,
@@ -339,29 +325,12 @@ exports[`The Text Input component should render as a password field with an icon
                 "alignItems": "center",
                 "justifyContent": "center",
               }
-            }
-          >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={18}
-              bbWidth={18}
-              height={18}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
                 Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  undefined,
-                  null,
-                  Object {
-                    "flex": 0,
-                    "height": 18,
-                    "width": 18,
-                  },
+                  "fill",
                 ]
               }
               vbHeight={24}
@@ -461,100 +430,69 @@ exports[`The Text Input component should render as a password field with an icon
         <View
           style={
             Object {
+              "backgroundColor": "#00676D",
               "bottom": 0,
-              "left": 0,
-              "right": 0,
+              "height": 0.5,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "#A5A5A5",
-                "bottom": -0.5,
-                "height": 0.5,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "transform": Array [
-                  Object {
-                    "scaleX": 0.0001,
-                  },
-                ],
-              }
-            }
-          >
-            <View
-              hasError={false}
-              style={
-                Object {
-                  "backgroundColor": "#00676D",
-                  "bottom": 0,
-                  "height": 0.5,
-                }
-              }
-            />
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Text Input component should render as a phone number field 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "opacity": 0,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          editable={true}
+          keyboardType="phone-pad"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder="Some placeholder"
+          placeholderTextColor="rgba(48, 48, 48, 0.6)"
+          rejectResponderTermination={true}
+          returnKeyType="done"
           style={
             Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
+              "color": "#303030",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 14,
+              "height": 38,
+              "paddingVertical": 0,
             }
           }
         >
@@ -656,100 +594,71 @@ exports[`The Text Input component should render as a phone number field 1`] = `
         <View
           style={
             Object {
+              "backgroundColor": "#00676D",
               "bottom": 0,
-              "left": 0,
-              "right": 0,
+              "height": 0.5,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "#A5A5A5",
-                "bottom": -0.5,
-                "height": 0.5,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "transform": Array [
-                  Object {
-                    "scaleX": 0.0001,
-                  },
-                ],
-              }
-            }
-          >
-            <View
-              hasError={false}
-              style={
-                Object {
-                  "backgroundColor": "#00676D",
-                  "bottom": 0,
-                  "height": 0.5,
-                }
-              }
-            />
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Text Input component should render as an email field 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "opacity": 0,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          autoCorrect={false}
+          editable={true}
+          keyboardType="email-address"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder="Some placeholder"
+          placeholderTextColor="rgba(48, 48, 48, 0.6)"
+          rejectResponderTermination={true}
+          returnKeyType="done"
           style={
             Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
+              "color": "#303030",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 14,
+              "height": 38,
+              "paddingVertical": 0,
             }
           }
         >
@@ -853,100 +762,68 @@ exports[`The Text Input component should render as an email field 1`] = `
         <View
           style={
             Object {
+              "backgroundColor": "#00676D",
               "bottom": 0,
-              "left": 0,
-              "right": 0,
+              "height": 0.5,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "#A5A5A5",
-                "bottom": -0.5,
-                "height": 0.5,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "transform": Array [
-                  Object {
-                    "scaleX": 0.0001,
-                  },
-                ],
-              }
-            }
-          >
-            <View
-              hasError={false}
-              style={
-                Object {
-                  "backgroundColor": "#00676D",
-                  "bottom": 0,
-                  "height": 0.5,
-                }
-              }
-            />
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Text Input component should render correctly 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "opacity": 0,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          editable={true}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder="Some placeholder"
+          placeholderTextColor="rgba(48, 48, 48, 0.6)"
+          rejectResponderTermination={true}
+          returnKeyType="done"
           style={
             Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
+              "color": "#303030",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 14,
+              "height": 38,
+              "paddingVertical": 0,
             }
           }
         >
@@ -1046,101 +923,41 @@ exports[`The Text Input component should render correctly 1`] = `
         <View
           style={
             Object {
+              "backgroundColor": "#00676D",
               "bottom": 0,
-              "left": 0,
-              "right": 0,
+              "height": 0.5,
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "#A5A5A5",
-                "bottom": -0.5,
-                "height": 0.5,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "transform": Array [
-                  Object {
-                    "scaleX": 0.0001,
-                  },
-                ],
-              }
-            }
-          >
-            <View
-              hasError={false}
-              style={
-                Object {
-                  "backgroundColor": "#00676D",
-                  "bottom": 0,
-                  "height": 0.5,
-                }
-              }
-            />
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;
 
 exports[`The Text Input component should render with no underline 1`] = `
-<RCTSafeAreaView
-  emulateUnlessSupported={true}
-  onLayout={[Function]}
+<View
+  disabled={false}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "marginVertical": 16,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
+  <View>
     <View
-      disabled={false}
       style={
         Object {
-          "marginVertical": 16,
+          "flexDirection": "row",
+          "justifyContent": "center",
         }
       }
     >
-      <View>
-        <View
-          style={
-            Object {
-              "flexDirection": "row",
-              "justifyContent": "center",
-            }
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
           }
         >
           <View
@@ -1237,7 +1054,54 @@ exports[`The Text Input component should render with no underline 1`] = `
           />
         </View>
       </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
+      />
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="none"
+      style={
+        Object {
+          "bottom": 0,
+          "justifyContent": "center",
+          "opacity": 1,
+          "position": "absolute",
+          "top": 0,
+          "transform": Array [
+            Object {
+              "scale": 1,
+            },
+            Object {
+              "translateX": 0,
+            },
+            Object {
+              "translateY": 0,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#505050",
+            "fontFamily": "InterUI-Bold",
+            "fontSize": 12,
+            "lineHeight": 17.28,
+            "paddingVertical": 4,
+          }
+        }
+      >
+        Text input...
+      </Text>
     </View>
   </View>
-</RCTSafeAreaView>
+</View>
 `;

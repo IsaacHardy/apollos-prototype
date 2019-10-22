@@ -46,7 +46,10 @@ export default class RockRequestBuilder {
    * Ends the request chain, ensuring that the caller of *get* will recieve an empty array.
    * Used in situations where we want to bypass Rock and return nothing.
    */
-  empty = () => ({ get: () => Promise.resolve([]) });
+  empty = () => {
+    this.get = () => Promise.resolve([]);
+    return this;
+  };
 
   /**
    * Sends a GET request to the server, resolves with the first promise
@@ -74,6 +77,9 @@ export default class RockRequestBuilder {
    * Filter resources by an odata string
    */
   filter = (filter, { operator } = { operator: 'or' }) => {
+    if (!filter) {
+      return this;
+    }
     const key = '$filter';
     if (this.query[key]) {
       this.query[key] = `(${this.query[key]}) ${operator} (${filter})`;
@@ -100,7 +106,7 @@ you can return request.empty()
   };
 
   cache = ({ ttl }) => {
-    this.options.ttl = ttl;
+    this.options.cacheOptions = { ttl };
     return this;
   };
 

@@ -110,6 +110,7 @@ export default class ContentItem extends RockApolloDataSource {
     const features = [];
 
     // TODO this should replace all other methods
+    // TODO this should be written in a more extendable way for partners
     const genericFeatures = get(attributeValues, 'features.value', '');
     const keyValuePairs = parseKeyValueAttribute(genericFeatures);
     keyValuePairs.forEach(({ key, value }, i) => {
@@ -173,8 +174,9 @@ export default class ContentItem extends RockApolloDataSource {
     return features;
   }
 
-  createSummary = ({ content, summary }) => {
-    if (summary) return summary;
+  createSummary = ({ content, attributeValues }) => {
+    const summary = get(attributeValues, 'summary.value', '');
+    if (summary !== '') return summary;
     if (!content || typeof content !== 'string') return '';
     // Protect against 0 length sentences (tokenizer will throw an error)
     if (content.split(' ').length === 1) return '';
@@ -201,6 +203,7 @@ export default class ContentItem extends RockApolloDataSource {
 
     const slug = await this.request('ContentChannelItemSlugs')
       .filter(`ContentChannelItemId eq ${contentId}`)
+      .cache({ ttl: 60 })
       .first();
 
     return [
@@ -270,7 +273,8 @@ export default class ContentItem extends RockApolloDataSource {
       .tz(ROCK.TIMEZONE)
       .format()
       .split(/[-+]\d+:\d+/)[0];
-    return `((StartDateTime lt datetime'${date}') or (StartDateTime eq null)) and ((ExpireDateTime gt datetime'${date}') or (ExpireDateTime eq null)) `;
+    const filter = `(((StartDateTime lt datetime'${date}') or (StartDateTime eq null)) and ((ExpireDateTime gt datetime'${date}') or (ExpireDateTime eq null))) and Status eq 'Approved'`;
+    return get(ROCK, 'SHOW_INACTIVE_CONTENT', false) ? null : filter;
   };
 
   expanded = true;
@@ -278,34 +282,29 @@ export default class ContentItem extends RockApolloDataSource {
   getCursorByParentContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
-    if (!associations || !associations.length) return null;
+    if (!associations || !associations.length) return this.request().empty();
 
-    const request = this.request();
-
-    const associationsFilter = associations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      associations.map(
+        ({ childContentChannelItemId }) => childContentChannelItemId
+      )
+    ).orderBy('Order');
   };
 
   getCursorByChildContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
-    if (!associations || !associations.length) return null;
-    const request = this.request();
-    const associationsFilter = associations.map(
-      ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
-    );
+    if (!associations || !associations.length) return this.request().empty();
 
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      associations.map(({ contentChannelItemId }) => contentChannelItemId)
+    ).orderBy('Order');
   };
 
   getCursorBySiblingContentItemId = async (id) => {
@@ -314,9 +313,11 @@ export default class ContentItem extends RockApolloDataSource {
       'ContentChannelItemAssociations'
     )
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
-    if (!parentAssociations || !parentAssociations.length) return null;
+    if (!parentAssociations || !parentAssociations.length)
+      return this.request().empty();
 
     // Now, fetch all children relations for those parents (excluding the original item)
     const siblingAssociationsRequest = await this.request(
@@ -330,15 +331,14 @@ export default class ContentItem extends RockApolloDataSource {
     siblingAssociationsRequest.filterOneOf(parentFilter);
 
     const siblingAssociations = await siblingAssociationsRequest.get();
-    if (!siblingAssociations || !siblingAssociations.length) return null;
+    if (!siblingAssociations || !siblingAssociations.length)
+      return this.request().empty();
 
-    const request = this.request();
-    const siblingFilter = siblingAssociations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(siblingFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      siblingAssociations.map(
+        ({ childContentChannelItemId }) => childContentChannelItemId
+      )
+    ).orderBy('Order');
   };
 
   // Generates feed based on persons dataview membership
@@ -356,9 +356,16 @@ export default class ContentItem extends RockApolloDataSource {
       return this.request().empty();
     }
 
+    // Rely on custom code without the plugin.
+    // Use plugin, if the user has set USE_PLUGIN to true.
+    // In general, you should ALWAYS use the plugin if possible.
+    const endpoint = get(ApollosConfig, 'ROCK.USE_PLUGIN', false)
+      ? 'Apollos/ContentChannelItemsByDataViewGuids'
+      : 'ContentChannelItems/GetFromPersonDataView';
+
     // Grabs content items based on personas
     return this.request(
-      `ContentChannelItems/GetFromPersonDataView?guids=${getPersonaGuidsForUser
+      `${endpoint}?guids=${getPersonaGuidsForUser
         .map((obj) => obj.guid)
         .join()}`
     )
@@ -367,30 +374,41 @@ export default class ContentItem extends RockApolloDataSource {
       .orderBy('StartDateTime', 'desc');
   };
 
-  byUserFeed = () =>
+  byUserFeed = () => this.byActive().orderBy('StartDateTime', 'desc');
+
+  byActive = () =>
     this.request()
       .filterOneOf(
         ROCK_MAPPINGS.FEED_CONTENT_CHANNEL_IDS.map(
           (id) => `ContentChannelId eq ${id}`
         )
       )
-      .andFilter(this.LIVE_CONTENT())
-      .orderBy('StartDateTime', 'desc');
+      .cache({ ttl: 60 })
+      .andFilter(this.LIVE_CONTENT());
 
   byContentChannelId = (id) =>
     this.request()
       .filter(`ContentChannelId eq ${id}`)
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
 
   byContentChannelIds = (ids = []) =>
     this.request()
       .filterOneOf(ids.map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
 
   getFromIds = (ids = []) => {
     if (ids.length === 0) return this.request().empty();
+    if (get(ApollosConfig, 'ROCK.USE_PLUGIN', false)) {
+      // Avoids issue when fetching more than ~10 items
+      // Caused by an Odata node limit.
+      return this.request(
+        `Apollos/GetContentChannelItemsByIds?ids=${ids.join(',')}`
+      ).andFilter(this.LIVE_CONTENT());
+    }
     return this.request()
       .filterOneOf(ids.map((id) => `Id eq ${id}`))
       .andFilter(this.LIVE_CONTENT());

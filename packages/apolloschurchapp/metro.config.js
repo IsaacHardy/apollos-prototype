@@ -26,12 +26,13 @@ const localDeps = [
 
 const sharedNativeModules = [
   'react-native-linear-gradient',
+  'react-native-safe-area-context',
   'react-native-svg',
   'react-native-onesignal',
   'react-native-music-control',
   'react-native-video',
   'react-native-video-controls',
-  'react-native-airplay-btn',
+  '@apollosproject/react-native-airplay-btn',
   'react-navigation',
 ];
 

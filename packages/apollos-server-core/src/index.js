@@ -1,13 +1,19 @@
 import { compact, mapValues, merge, values } from 'lodash';
 import gql from 'graphql-tag';
 import { InMemoryLRUCache } from 'apollo-server-caching';
+import { makeExecutableSchema } from 'apollo-server';
+import { createQueues, UI } from 'bull-board';
 
 import * as Node from './node';
 import * as Pagination from './pagination';
 import * as Media from './media';
 
 export { createGlobalId, parseGlobalId } from './node';
-export { withEdgePagination } from './pagination/utils';
+export {
+  createCursor,
+  parseCursor,
+  withEdgePagination,
+} from './pagination/utils';
 export { resolverMerge, schemaMerge } from './utils';
 
 // Types that all apollos-church servers will use.
@@ -76,6 +82,21 @@ export const createContext = (data) => ({ req = {} } = {}) => {
   contextMiddleware.forEach((middleware) => {
     context = middleware({ req, context });
   });
+
+  // Used to execute graphql queries from within the schema itself. #meta
+  // You probally should avoid using this.
+  try {
+    const schema = makeExecutableSchema({
+      typeDefs: [...createSchema(data), `scalar Upload`],
+      resolvers: createResolvers(data),
+    });
+    context.schema = schema;
+  } catch (e) {
+    // Not compatible with our test environment under certain conditions
+    // Hence, we need to swallow errors.
+    console.warn(e);
+  }
+
   return context;
 };
 
@@ -107,11 +128,33 @@ export const createMiddleware = (data) => ({ app, context, dataSources }) => {
   return middlewares.forEach((middleware) => middleware({ app, getContext }));
 };
 
+export const createJobs = (data) => ({ app, context, dataSources }) => {
+  const jobs = compact(
+    values({ ...builtInData, ...data }).map((datum) => datum.jobs)
+  );
+
+  const getContext = createContextGetter({ context, dataSources });
+
+  const queues = createQueues(process.env.REDIS_URL);
+
+  app.use('/admin/queues', UI);
+
+  return jobs.forEach((create) => create({ app, getContext, queues }));
+};
+
 export const createApolloServerConfig = (data) => {
-  const context = createContext(data);
   const dataSources = createDataSources(data);
   const schema = createSchema(data);
   const resolvers = createResolvers(data);
+  const context = createContext(data);
   const applyServerMiddleware = createMiddleware(data);
-  return { context, dataSources, schema, resolvers, applyServerMiddleware };
+  const setupJobs = createJobs(data);
+  return {
+    context,
+    dataSources,
+    schema,
+    resolvers,
+    applyServerMiddleware,
+    setupJobs,
+  };
 };
