@@ -169,6 +169,7 @@ export const scriptureSchema = gql`
     html: String
     reference: String
     copyright: String
+    version: String
   }
 
   extend type Query {
