@@ -25,6 +25,7 @@ describe('Scripture', () => {
           html
           reference
           copyright
+          version
         }
       }
     `;
@@ -42,6 +43,7 @@ describe('Scripture', () => {
           html
           reference
           copyright
+          version
         }
       }
     `;
@@ -60,6 +62,7 @@ describe('Scripture', () => {
             html
             reference
             copyright
+            version
           }
         }
       }
