@@ -32,9 +32,13 @@ const ProtectedRouteWithSplashScreen = (props) => {
   return <ProtectedRoute {...props} onRouteChange={handleOnRouteChange} />;
 };
 
-// Hack to avoid needing to pass emailRequired through the navigator.navigate
-const EnhancedAuth = (props) => <Auth {...props} emailRequired />;
-// 😑
+const EnhancedAuth = (props) => (
+  <Auth
+    {...props}
+    emailRequired
+    handleForgotPassword={() => console.log('hello')}
+  />
+);
 hoistNonReactStatic(EnhancedAuth, Auth);
 
 const AppNavigator = createStackNavigator(
