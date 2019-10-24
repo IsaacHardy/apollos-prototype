@@ -62,6 +62,7 @@ class DateInput extends PureComponent {
           isVisible={this.state.isVisible}
           onConfirm={this.handleConfirm}
           onCancel={this.handleClose}
+          maximumDate={new Date()}
         />
         {this.props.displayValue || this.props.placeholder ? (
           <FloatingLabel animation={new Animated.Value(1)}>
