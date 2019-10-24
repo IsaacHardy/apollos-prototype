@@ -11,5 +11,7 @@ export default {
     id: ({ id }, args, context, { parentType }) =>
       createGlobalId(id, parentType.name),
     html: ({ content }) => content,
+    version: (root, args, { dataSources }) =>
+      dataSources.Scripture.getVersion(),
   },
 };

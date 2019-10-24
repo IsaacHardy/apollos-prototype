@@ -41,4 +41,10 @@ export default class Scripture extends RESTDataSource {
     }
     return scriptures.data;
   }
+
+  async getVersion() {
+    const bibleId = BIBLE_API.BIBLE_ID;
+    const bible = await this.get(`${this.baseURL}${bibleId}`);
+    return bible.data.abbreviation;
+  }
 }

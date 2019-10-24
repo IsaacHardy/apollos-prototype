@@ -391,6 +391,7 @@ type Scripture implements Node {
   html: String
   reference: String
   copyright: String
+  version: String
 }
 
 type ScriptureFeature implements Feature & Node {
