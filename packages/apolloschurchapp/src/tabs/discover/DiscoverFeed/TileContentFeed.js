@@ -55,7 +55,7 @@ const loadingStateObject = {
 };
 
 const TileContentFeed = ({ isLoading, id, name, navigation, content = [] }) =>
-  !isEmpty(content) && (
+  (isLoading || !isEmpty(content)) && (
     <>
       <RowHeader>
         <Name>
