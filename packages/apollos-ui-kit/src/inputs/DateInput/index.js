@@ -23,6 +23,7 @@ class DateInput extends PureComponent {
     onChangeText: PropTypes.func,
     onBlur: PropTypes.func,
     error: PropTypes.any, // eslint-disable-line
+    maximumDate: PropTypes.string,
   };
 
   state = {
@@ -62,7 +63,7 @@ class DateInput extends PureComponent {
           isVisible={this.state.isVisible}
           onConfirm={this.handleConfirm}
           onCancel={this.handleClose}
-          maximumDate={new Date()}
+          maximumDate={this.props.maximumDate || new Date()}
         />
         {this.props.displayValue || this.props.placeholder ? (
           <FloatingLabel animation={new Animated.Value(1)}>
