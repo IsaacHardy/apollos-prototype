@@ -33,7 +33,8 @@ const UniversalContentItem = ({ content, loading }) => {
               </Stretchy>
             ) : null}
             <MediaControls contentId={content.id} />
-            <PaddedView vertical={coverImageSources.length || loading ? false : true}>
+            {/* fixes text/navigation spacing by adding vertical padding if we dont have an image */}
+            <PaddedView vertical={!coverImageSources.length}>
               <H2 padded isLoading={!content.title && loading}>
                 {content.title}
               </H2>
